@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace DCT.TT.CryptoInfo.ViewModels.Base
 {
-    internal abstract class ViewModelBase : INotifyPropertyChanged
+    internal abstract class ViewModelBase : INotifyPropertyChanged , IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
 
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
         {
@@ -22,6 +23,17 @@ namespace DCT.TT.CryptoInfo.ViewModels.Base
             field = value;
             OnPropertyChanged(PropertyName);
             return true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+        private bool _Disposed;
+        protected virtual void Dispose(bool Disposing)
+        {
+            if(!Disposing || _Disposed) return;
+            _Disposed = true;
         }
     }
 }
