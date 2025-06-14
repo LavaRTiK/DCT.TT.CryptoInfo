@@ -9,7 +9,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
 {
     internal class MainWindowViewModel : ViewModelBase
     {
-        private string _Title;
+        private string _Title = "CryptoInfo";
         public string Title
         {
             get => _Title;
