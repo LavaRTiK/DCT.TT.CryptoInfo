@@ -13,14 +13,13 @@
     </Window.DataContext>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Open" Click="MenuItem_Click">
-                <MenuItem Header="Exit"/>
+            <MenuItem Header="Open">
+                <MenuItem Header="Exit" Command="{Binding CloseApplicationCommand}"/>
             </MenuItem>
             <MenuItem Header="About">
                 <MenuItem Header="test"/>
             </MenuItem>
         </Menu>
-        <Frame Name="MainFrame"/>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
                 <TextBlock Text="test"></TextBlock>
