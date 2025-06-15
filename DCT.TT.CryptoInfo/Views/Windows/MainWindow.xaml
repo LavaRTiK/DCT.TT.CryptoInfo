@@ -27,35 +27,8 @@
             </StatusBarItem>
         </StatusBar>
         <TabControl>
-            <TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <fa:ImageAwesome Icon="Regular_File" Height="13"/>
-                        <TextBlock Text="Вкладка 1"/>
-                    </StackPanel>
-                </TabItem.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="67*"/>
-                        <RowDefinition Height="299*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="217*"/>
-                        <ColumnDefinition Width="577*"/>
-                    </Grid.ColumnDefinitions>
-                    <Rectangle Grid.Column="0" Grid.Row="0"
-                               Margin="5,7"
-                               Fill="Blue" 
-                               Stroke="Red" 
-                               StrokeThickness="3" 
-                               RadiusX="5" 
-                               RadiusY="7"/>
-                    <Ellipse Grid.Column="1" Grid.Row="0"
-                            Fill="Red"
-                            Stroke="Blue"
-                            StrokeThickness="3"/>  
+            <TabItem Header="Cтуденты">
 
-                </Grid>
             </TabItem>
             <TabItem Header="вкладка 2">
 
