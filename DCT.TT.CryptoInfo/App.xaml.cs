@@ -22,7 +22,7 @@ namespace DCT.TT.CryptoInfo
         protected override async void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            var host = _host;
+            var host = Host; 
             await host.StopAsync().ConfigureAwait(false);
             host.Dispose();
             _host = null;
@@ -30,15 +30,17 @@ namespace DCT.TT.CryptoInfo
 
         protected override async void OnStartup(StartupEventArgs e)
         {
-            var host = _host;
+            var host = Host;
             base.OnStartup(e);
-            await _host.StartAsync().ConfigureAwait(false);
+            await host.StartAsync().ConfigureAwait(false);
         }
 
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection service)
         {
             //service.AddSingleton<DataService>();
             service.AddSingleton<CryptoStatiscticViewModel>();
+            //request host service
+            //App.Host.Services.GetRequiredService<CryptoStatiscticViewModel>();
         }
     }
 }

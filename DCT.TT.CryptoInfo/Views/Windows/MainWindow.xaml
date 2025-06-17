@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:DCT.TT.CryptoInfo.ViewModels"
         xmlns:local="clr-namespace:DCT.TT.CryptoInfo"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         DataContext="{vm:MainWindowViewModel}"
         Title="{Binding Title}" 
@@ -26,7 +27,7 @@
         </StatusBar>
         <TabControl>
             <TabItem Header="Cтуденты">
-
+                <TextBlock Text="{x:Static system:Environment.CurrentDirectory}"></TextBlock>
             </TabItem>
             <TabItem Header="вкладка 2">
 
