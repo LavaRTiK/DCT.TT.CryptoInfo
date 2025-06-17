@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace DCT.TT.CryptoInfo.ViewModels.Base
 {
-    internal abstract class ViewModelBase : INotifyPropertyChanged , IDisposable
+    internal abstract class ViewModelBase : MarkupExtension, INotifyPropertyChanged , IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -34,6 +31,11 @@ namespace DCT.TT.CryptoInfo.ViewModels.Base
         {
             if(!Disposing || _Disposed) return;
             _Disposed = true;
+        }
+
+        public override object ProvideValue(IServiceProvider sp)
+        {
+            return this;
         }
     }
 }
