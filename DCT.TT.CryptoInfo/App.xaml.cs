@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using DCT.TT.CryptoInfo.ViewModels;
@@ -16,6 +19,7 @@ namespace DCT.TT.CryptoInfo
     /// </summary>
     public partial class App : Application
     {
+        public static bool IsDesignMode { get; private set; } = true;
         private static IHost _host;
         public static IHost Host => _host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
 
@@ -30,6 +34,7 @@ namespace DCT.TT.CryptoInfo
 
         protected override async void OnStartup(StartupEventArgs e)
         {
+            IsDesignMode = false;
             var host = Host;
             base.OnStartup(e);
             await host.StartAsync().ConfigureAwait(false);
@@ -42,5 +47,9 @@ namespace DCT.TT.CryptoInfo
             //request host service
             //App.Host.Services.GetRequiredService<CryptoStatiscticViewModel>();
         }
+
+        public static string CurrentDirectory => IsDesignMode ? Path.GetDirectoryName(GetSourceCodePath()) : Environment.CurrentDirectory;
+
+        private static string GetSourceCodePath([CallerFilePath] string path = null) => path;
     }
 }
