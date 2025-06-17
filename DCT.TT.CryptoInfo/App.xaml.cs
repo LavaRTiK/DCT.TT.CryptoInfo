@@ -16,6 +16,25 @@ namespace DCT.TT.CryptoInfo
     /// </summary>
     public partial class App : Application
     {
+        private static IHost _host;
+        public static IHost Host => _host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
+
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            var host = _host;
+            await host.StopAsync().ConfigureAwait(false);
+            host.Dispose();
+            _host = null;
+        }
+
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            var host = _host;
+            base.OnStartup(e);
+            await _host.StartAsync().ConfigureAwait(false);
+        }
+
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection service)
         {
             //service.AddSingleton<DataService>();

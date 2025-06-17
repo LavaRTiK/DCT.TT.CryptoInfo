@@ -28,7 +28,7 @@ namespace DCT.TT.CryptoInfo
                 cfg.SetBasePath(Environment.CurrentDirectory);
                 cfg.AddJsonFile("appsettings.json", true, reloadOnChange: true);
             });
-            hostBuilder.ConfigureServices(App.ConfigureService);
+            hostBuilder.ConfigureServices(App.ConfigureServices);
 
             return hostBuilder;
         }
