@@ -8,31 +8,36 @@
         xmlns:local="clr-namespace:DCT.TT.CryptoInfo"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        DataContext="{vm:MainWindowViewModel}"
-        Title="{Binding Title}" 
-        Height="450" Width="800">
+        DataContext="{Binding MainWindowModel,Source={StaticResource Locator}}"
+        Title="{Binding Title}"
+    Height="450" Width="800">
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Open">
-                <MenuItem Header="Exit" Command="{Binding CloseApplicationCommand}"/>
-            </MenuItem>
-            <MenuItem Header="About">
-                <MenuItem Header="test"/>
-            </MenuItem>
-        </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock Text="test"></TextBlock>
+                <TextBlock Text="Online"></TextBlock>
             </StatusBarItem>
+            <StatusBarItem Content="Offline"/>
         </StatusBar>
-        <TabControl>
-            <TabItem Header="Cтуденты">
-                <TextBlock Text="{x:Static system:Environment.CurrentDirectory}"></TextBlock>
-            </TabItem>
-            <TabItem Header="вкладка 2">
-
-            </TabItem>
-            <TabItem Header="вкладка 2" Margin="-2,-2,-2,0"/>
-        </TabControl>
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="21*"/>
+                <RowDefinition Height="185*"/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#2d2d30" Offset="0" />
+                    <GradientStop Color="#252526" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackPanel  Orientation="Horizontal" Margin="10,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="23" Width="368" Grid.Row="0">
+                <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Обзор</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Портфолио</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Новости</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Настройки</Button>
+            </StackPanel>
+            <Separator Grid.Row="1" VerticalAlignment="Top" Margin="10,0,10,0" Height="1"/>
+            <Frame Grid.Row="1" Content="{Binding PageSource}"  NavigationUIVisibility="Hidden" Margin="0,5,0,0"/>
+        </Grid>
+        <!--<Frame Content="{Binding PageSource}"  NavigationUIVisibility="Hidden"/>-->
     </DockPanel>
 </Window>

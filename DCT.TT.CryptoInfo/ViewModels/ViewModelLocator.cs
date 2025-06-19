@@ -9,6 +9,6 @@ namespace DCT.TT.CryptoInfo.ViewModels
 {
     internal class ViewModelLocator
     {
-        public MainWindowViewModel MainWindowModel => App.Host.Services.GetRequiredService<MainWindowViewModel>();
+        public MainWindowViewModel MainWindowModel => App.Services.GetRequiredService<MainWindowViewModel>();
     }
 }

@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
+using DCT.TT.CryptoInfo.Services;
 using DCT.TT.CryptoInfo.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,6 +23,7 @@ namespace DCT.TT.CryptoInfo
         public static bool IsDesignMode { get; private set; } = true;
         private static IHost _host;
         public static IHost Host => _host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
+        public static IServiceProvider Services => Host.Services;
 
         protected override async void OnExit(ExitEventArgs e)
         {
@@ -42,9 +44,9 @@ namespace DCT.TT.CryptoInfo
 
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection service)
         {
-            //service.AddSingleton<DataService>();
-            service.AddSingleton<CryptoStatiscticViewModel>();
-            //request host service
+            service.RegisterServices();
+
+            service.RegisterViewModels();
             //App.Host.Services.GetRequiredService<CryptoStatiscticViewModel>();
         }
 
