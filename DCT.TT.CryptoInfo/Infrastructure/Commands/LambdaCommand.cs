@@ -12,11 +12,18 @@ namespace DCT.TT.CryptoInfo.Infrastructure.Commands
         private readonly Action<object> _execute;
         private readonly Func<object, bool> _canExecute;
 
-        public LambdaCommand(Action<object> Execute,Func<object,bool> CanExecute = null) {
+        public LambdaCommand(Action Execute,Func<bool> CanExecute = null)
+        :this(p => Execute(),CanExecute is null ? (Func<object,bool>)null : p => CanExecute())
+        {
+            //_execute = Execute ?? throw new ArgumentNullException(nameof(Execute ));
+            //_canExecute = CanExecute;
+        }
+
+        public LambdaCommand(Action<object> Execute, Func<object, bool> CanExecute)
+        {
             _execute = Execute ?? throw new ArgumentNullException(nameof(Execute ));
             _canExecute = CanExecute;
         }
-
 
         public override bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true; 
 
