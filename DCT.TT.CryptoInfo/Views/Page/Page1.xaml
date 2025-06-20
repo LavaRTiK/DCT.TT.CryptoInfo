@@ -94,6 +94,7 @@
             </TextBlock.Style>
         </TextBlock>
         <TextBlock Style="{DynamicResource DefualtText}" Grid.Row="1" Grid.Column="0" Text="Обзор рынка" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Height="22" Width="101" />
-        <oxy:PlotView Grid.Row="2" Grid.Column="0" Model="{Binding MyModel}" Background="Transparent"></oxy:PlotView>
+        <oxy:PlotView Grid.Row="2" Grid.Column="0" Model="{Binding CryptoDiagram1}" Background="Transparent"></oxy:PlotView>
+        <oxy:PlotView Grid.Row="2" Grid.Column="1" Model="{Binding CryptoDiagram2}" Background="Transparent"></oxy:PlotView>
     </Grid>
 </Page>
