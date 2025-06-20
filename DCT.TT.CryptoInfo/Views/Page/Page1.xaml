@@ -5,8 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:fa="http://schemas.fontawesome.com/icons/"
       xmlns:local="clr-namespace:DCT.TT.CryptoInfo.Views.Page"
+      xmlns:oxy="http://oxyplot.org/wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      DataContext="{Binding Page1Model ,Source={StaticResource Locator}}"
       Title="Page1">
     <Page.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
@@ -61,8 +63,9 @@
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="253*"/>
-            <ColumnDefinition Width="547*"/>
+            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="53*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="91*"/>
@@ -77,8 +80,8 @@
             </LinearGradientBrush>
         </Grid.Background>
         <TextBox Style="{DynamicResource TextBoxStyleSearch}" Name="search" Background="#333333" BorderBrush="#3f3f46" BorderThickness="1" FontSize="16" Foreground="White" Margin="10,0,41,0" Padding="16,8,40,8" VerticalAlignment="Center" Height="38" />
-        <fa:ImageAwesome IsHitTestVisible="False" Icon="Solid_Search" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20" Margin="186,0,0,0"/>
-        <TextBlock IsHitTestVisible="False" FontSize="16" Foreground="White" Text="Пошук криптовлюти..." VerticalAlignment="Center" Margin="15,0,0,0" Height="22">
+        <fa:ImageAwesome IsHitTestVisible="False" Icon="Solid_Search" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20" Margin="200,0,0,0"/>
+        <TextBlock IsHitTestVisible="False" FontSize="16" Foreground="Gray" Text="Пошук криптовлюти..." VerticalAlignment="Center" Margin="15,0,0,0" Height="22">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -91,5 +94,6 @@
             </TextBlock.Style>
         </TextBlock>
         <TextBlock Style="{DynamicResource DefualtText}" Grid.Row="1" Grid.Column="0" Text="Обзор рынка" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Height="22" Width="101" />
+        <oxy:PlotView Grid.Row="2" Grid.Column="0" Model="{Binding MyModel}" Background="Transparent"></oxy:PlotView>
     </Grid>
 </Page>
