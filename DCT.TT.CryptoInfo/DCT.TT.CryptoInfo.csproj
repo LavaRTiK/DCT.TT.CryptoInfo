@@ -237,6 +237,8 @@
     <Compile Include="Models\ParseDataJson.cs" />
     <Compile Include="Models\PointCoin.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Services\CryptoApiService.cs" />
+    <Compile Include="Services\Interface\ICryptoApiService.cs" />
     <Compile Include="Services\PageService.cs" />
     <Compile Include="Services\Registrator.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />

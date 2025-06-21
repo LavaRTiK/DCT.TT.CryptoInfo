@@ -71,6 +71,18 @@ namespace DCT.TT.CryptoInfo.ViewModels
             dataPoin.Add(point1);
             dataPoin.Add(point2);
             dataPoin.Add(point3);
+
+            CryptoDiagram1 = initModel(dataPoin);
+            CryptoDiagram2 = initModel(dataPoin);
+            CryptoDiagram3 = initModel(dataPoin);
+        }
+
+        private void UpdateDiagram()
+        {
+            //timer update 5 second 
+        }
+        private PlotModel initModel(List<PointCoin> dataPoin)
+        {
             var min = dataPoin.Min(p => p.PriceUsd);
             var max = dataPoin.Max(p => p.PriceUsd);
             var model = new PlotModel
@@ -79,14 +91,15 @@ namespace DCT.TT.CryptoInfo.ViewModels
                 PlotAreaBorderThickness = new OxyThickness(1.5),
                 Background = OxyColors.Transparent,
                 PlotAreaBackground = OxyColors.Transparent,
-                PlotAreaBorderColor  = OxyColors.DarkSlateGray,
+                PlotAreaBorderColor = OxyColors.DarkSlateGray,
+                
             };
-            
+
             model.Axes.Add(new LinearAxis()
             {
                 //Price
-                Minimum = min - (min*0.2),
-                Maximum = max +50,
+                Minimum = min - (min * 0.2),
+                Maximum = max + 50,
                 Position = AxisPosition.Left,
                 Title = "",
                 IsZoomEnabled = false,
@@ -117,64 +130,8 @@ namespace DCT.TT.CryptoInfo.ViewModels
                 lineSeries.Points2.Add(new DataPoint(DateTimeAxis.ToDouble(item.Date), 0));
             }
             model.Series.Add(lineSeries);
-            var model1 = new PlotModel
-            {
-                IsLegendVisible = false,
-                PlotAreaBorderThickness = new OxyThickness(1.5),
-                Background = OxyColors.Transparent,
-                PlotAreaBackground = OxyColors.Transparent,
-                PlotAreaBorderColor = OxyColors.DarkSlateGray,
-            };
-
-            model1.Axes.Add(new LinearAxis()
-            {
-                //Price
-                Minimum = min - (min * 0.2),
-                Maximum = max + 50,
-                Position = AxisPosition.Left,
-                Title = "",
-                IsZoomEnabled = false,
-                IsPanEnabled = false,
-                IsAxisVisible = false,
-                StartPosition = 0,
-                EndPosition = 0.7,
-            });
-            model1.Axes.Add(new DateTimeAxis
-            {
-                IsZoomEnabled = false,
-                IsPanEnabled = false,
-                IsAxisVisible = false,
-                Position = AxisPosition.Bottom,
-                Title = ""
-            });
-            var lineSeries1 = new AreaSeries()
-            {
-                Color = OxyColor.FromAColor(255, OxyColors.Aqua),
-                Fill = OxyColor.FromAColor(40, OxyColors.Aqua),
-                //Color2 = OxyColor.FromAColor(50, OxyColors.Aqua),
-                StrokeThickness = 2,
-                MarkerType = MarkerType.None,
-            };
-            foreach (var item in dataPoin)
-            {
-                lineSeries1.Points.Add(new DataPoint(DateTimeAxis.ToDouble(item.Date), item.PriceUsd));
-                lineSeries1.Points2.Add(new DataPoint(DateTimeAxis.ToDouble(item.Date), 0));
-            }
-            model1.Series.Add(lineSeries1);
-            CryptoDiagram1 = model;
-            CryptoDiagram2 = model1;
-
-        }
-
-        private PlotModel addLine(PlotModel model, double[] x, double[] y, double lineThink, OxyColor colorValue)
-        {
-            var lineSeries = new LineSeries { StrokeThickness = lineThink, Color = colorValue };
-            for (int i = 0; i < x.Length; i++)
-            {
-                lineSeries.Points.Add(new DataPoint(x[i], y[i]));
-            }
-            model.Series.Add(lineSeries);
             return model;
         }
+
     }
 }
