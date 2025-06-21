@@ -62,6 +62,12 @@
         </Style>
     </Page.Resources>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#2d2d30" Offset="0" />
+                <GradientStop Color="#252526" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="53*"/>
             <ColumnDefinition Width="54*"/>
@@ -71,31 +77,46 @@
             <RowDefinition Height="91*"/>
             <RowDefinition Height="48*"/>
             <RowDefinition Height="140*"/>
-            <RowDefinition Height="171*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="124*"/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                <GradientStop Color="#2d2d30" Offset="0" />
-                <GradientStop Color="#252526" Offset="1" />
-            </LinearGradientBrush>
-        </Grid.Background>
-        <TextBox Style="{DynamicResource TextBoxStyleSearch}" Name="search" Background="#333333" BorderBrush="#3f3f46" BorderThickness="1" FontSize="16" Foreground="White" Margin="10,0,41,0" Padding="16,8,40,8" VerticalAlignment="Center" Height="38" />
+        <TextBox Style="{DynamicResource TextBoxStyleSearch}" x:Name="search" Background="#333333" BorderBrush="#3f3f46" BorderThickness="1" FontSize="16" Foreground="White" Margin="10,0,41,0" Padding="16,8,40,8" VerticalAlignment="Center" Height="38" />
         <fa:ImageAwesome IsHitTestVisible="False" Icon="Solid_Search" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20" Margin="200,0,0,0"/>
         <TextBlock IsHitTestVisible="False" FontSize="16" Foreground="Gray" Text="Пошук криптовлюти..." VerticalAlignment="Center" Margin="15,0,0,0" Height="22">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text,ElementName=search}" Value="">
+                        <DataTrigger Binding="{Binding Text, ElementName=search}" Value="">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock Style="{DynamicResource DefualtText}" Grid.Row="1" Grid.Column="0" Text="Обзор рынка" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Height="22" Width="101" />
-        <oxy:PlotView Grid.Row="2" Grid.Column="0" Model="{Binding CryptoDiagram1}" Background="Transparent"></oxy:PlotView>
-        <oxy:PlotView Grid.Row="2" Grid.Column="1" Model="{Binding CryptoDiagram2}" Background="Transparent"></oxy:PlotView>
-        <oxy:PlotView Grid.Row="2" Grid.Column="2" Model="{Binding CryptoDiagram3}" Background="Transparent"></oxy:PlotView>
+        <TextBlock Style="{DynamicResource DefualtText}" Grid.Row="1" Grid.Column="0" Text="Обзор рынка" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+        <Border Grid.Row="2" Grid.Column="0" BorderBrush="#3f3f46" BorderThickness="1" Margin="10,10,10,10" CornerRadius="5">
+            <Grid>
+                <TextBlock IsHitTestVisible="True"  Style="{DynamicResource DefualtText}" FontWeight="SemiBold" Text="Bitcoin" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,10,0,0"/>
+                <TextBlock IsHitTestVisible="True"  Foreground="Gray"  FontSize="14" Text="BTC" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="15,30,0,0"/>
+                <oxy:PlotView Model="{Binding CryptoDiagram1}" Background="Transparent"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="#3f3f46" BorderThickness="1" Margin="10,10,10,10" CornerRadius="5">
+            <Grid>
+                <TextBlock IsHitTestVisible="True" Style="{DynamicResource DefualtText}" FontWeight="SemiBold" Text="Bitcoin" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,10,0,0"/>
+                <TextBlock IsHitTestVisible="True" Foreground="Gray"  FontSize="14" Text="BTC" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="15,30,0,0"/>
+                <oxy:PlotView Model="{Binding CryptoDiagram2}" Background="Transparent"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="2" BorderBrush="#3f3f46" BorderThickness="1" Margin="10,10,10,10" CornerRadius="5">
+            <Grid>
+                <TextBlock IsHitTestVisible="True" Style="{DynamicResource DefualtText}" FontWeight="SemiBold" Text="Bitcoin" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,10,0,0"/>
+                <TextBlock IsHitTestVisible="True" Foreground="Gray"  FontSize="14" Text="BTC" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="15,30,0,0"/>
+                <oxy:PlotView Model="{Binding CryptoDiagram3}" Background="Transparent"/>
+            </Grid>
+        </Border>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Список криптовалют" Style="{DynamicResource DefualtText}" Margin="10,10,0,0" Grid.RowSpan="2"/>
     </Grid>
 </Page>

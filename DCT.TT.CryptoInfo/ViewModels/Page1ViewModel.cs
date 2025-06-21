@@ -88,11 +88,10 @@ namespace DCT.TT.CryptoInfo.ViewModels
             var model = new PlotModel
             {
                 IsLegendVisible = false,
-                PlotAreaBorderThickness = new OxyThickness(1.5),
                 Background = OxyColors.Transparent,
                 PlotAreaBackground = OxyColors.Transparent,
-                PlotAreaBorderColor = OxyColors.DarkSlateGray,
-                
+                PlotAreaBorderThickness = new OxyThickness(0),
+
             };
 
             model.Axes.Add(new LinearAxis()
@@ -106,7 +105,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
                 IsPanEnabled = false,
                 IsAxisVisible = false,
                 StartPosition = 0,
-                EndPosition = 0.7,
+                EndPosition = 0.6,
             });
             model.Axes.Add(new DateTimeAxis
             {
