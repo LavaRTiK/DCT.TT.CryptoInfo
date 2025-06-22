@@ -119,9 +119,13 @@
         </Border>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Список криптовалют" Style="{DynamicResource DefualtText}" Margin="10,10,0,0"/>
         <ListView Grid.Row="3" Grid.ColumnSpan="3">
-            <GridView>
-                <GridViewColumn></GridViewColumn>
-            </GridView>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                    <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Age}"></GridViewColumn>
+                    <GridViewColumn Header="Mail" DisplayMemberBinding="{Binding Mail}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
         </ListView>
     </Grid>
 </Page>
