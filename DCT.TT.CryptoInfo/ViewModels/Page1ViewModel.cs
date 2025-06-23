@@ -42,13 +42,28 @@ namespace DCT.TT.CryptoInfo.ViewModels
         }
 
         #endregion
+
+        #region ListCrypto
+        //dont update dimamic  ObservableCollection 
+        private List<CoinModel> _listCrypto;
+        public List<CoinModel> ListCrypto
+        {
+            get => _listCrypto;
+            set
+            {
+                Set(ref _listCrypto, value);
+            }
+        }
+        #endregion
         #endregion
 
         public PlotModel CryptoDiagram1 { get; private set; }
         public PlotModel CryptoDiagram2 { get; private set; }
         public PlotModel CryptoDiagram3 { get; private set; }
+
         public Page1ViewModel()
         {
+
             var dataPoin = new List<PointCoin>();
             PointCoin point1 = new PointCoin()
             {
@@ -79,7 +94,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
 
         private void UpdateDiagram()
         {
-            //timer update 5 second 
+            //timer update 5 second //requst limit 
         }
         private PlotModel initModel(List<PointCoin> dataPoin)
         {
