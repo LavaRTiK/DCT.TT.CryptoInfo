@@ -121,7 +121,7 @@
         </Border>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Список криптовалют" Style="{DynamicResource DefualtText}" Margin="10,10,0,0"/>
         <ScrollViewer Grid.Row="4" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="False">
-        <ListView Background="Transparent" FontSize="16" FontWeight="Medium" Foreground="White">
+        <ListView Background="Transparent" FontSize="16" FontWeight="Medium" Foreground="White" ItemsSource="{Binding ListCrypto}">
             <ListView.Resources>
                 <Style TargetType="{x:Type GridViewColumnHeader}">
                     <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
@@ -132,17 +132,17 @@
             </ListView.Resources>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="#" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
-                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Age}"></GridViewColumn>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Mail}" ></GridViewColumn>
-                    <GridViewColumn Header="24ч %" DisplayMemberBinding="{Binding Mail}" ></GridViewColumn>
-                    <GridViewColumn Header="Рыночная капитализация" DisplayMemberBinding="{Binding Mail}"></GridViewColumn>
-                    <GridViewColumn Header="Объем (24ч)" DisplayMemberBinding="{Binding Mail}"></GridViewColumn>
-                    <GridViewColumn Header="Действия" DisplayMemberBinding="{Binding Mail}">
+                    <GridViewColumn Header="#" DisplayMemberBinding="{Binding  Rank}"></GridViewColumn>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding PriceUsd}" ></GridViewColumn>
+                    <GridViewColumn Header="24ч %" DisplayMemberBinding="{Binding ChangePercent24Hr}" ></GridViewColumn>
+                    <GridViewColumn Header="Рыночная капитализация" DisplayMemberBinding="{Binding MarketCapUsd}"></GridViewColumn>
+                    <GridViewColumn Header="Объем (24ч)" DisplayMemberBinding="{Binding VolumeUsd24Hr}"></GridViewColumn>
+                    <GridViewColumn Header="Действия">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <!-- тут не зыбать команду и параметр-->
-                                <Button Content="подробноее"></Button>
+                                <Button Content="подробноее команда для id"></Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
