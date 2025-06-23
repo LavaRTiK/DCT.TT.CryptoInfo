@@ -17,9 +17,13 @@ namespace DCT.TT.CryptoInfo.Models
         public string Symbol { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
+        [JsonPropertyName("marketCapUsd")]
+        public double MarketCapUsd { get; set; }
         [JsonPropertyName("priceUsd")]
         public double PriceUsd { get; set; }
         [JsonPropertyName("changePercent24Hr")]
         public double ChangePercent24Hr { get; set; }
+        [JsonPropertyName("volumeUsd24Hr")]
+        public double VolumeUsd24Hr { get; set; }
     }
 }
