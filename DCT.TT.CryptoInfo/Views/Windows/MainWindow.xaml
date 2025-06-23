@@ -12,23 +12,25 @@
         Title="{Binding Title}"
     Height="450" Width="800">
     <DockPanel>
-        <StatusBar DockPanel.Dock="Bottom">
+        <DockPanel.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#2d2d30" Offset="0" />
+                <GradientStop Color="#252526" Offset="1" />
+            </LinearGradientBrush>
+        </DockPanel.Background>
+        <StatusBar DockPanel.Dock="Bottom"  Background="Transparent" FontSize="12" Foreground="#9ca3af">
             <StatusBarItem>
-                <TextBlock Text="Online"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Ellipse Width="30" Height="30" Stroke="Black" StrokeThickness="2" Fill="Yellow"></Ellipse>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Onflie</TextBlock>
+                </StackPanel>
             </StatusBarItem>
-            <StatusBarItem Content="Offline"/>
         </StatusBar>
         <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="21*"/>
                 <RowDefinition Height="185*"/>
             </Grid.RowDefinitions>
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="#2d2d30" Offset="0" />
-                    <GradientStop Color="#252526" Offset="1" />
-                </LinearGradientBrush>
-            </Grid.Background>
             <StackPanel  Orientation="Horizontal" Margin="10,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="23" Width="368" Grid.Row="0">
                 <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Обзор</Button>
                 <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Портфолио</Button>
