@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DCT.TT.CryptoInfo.Services;
+using DCT.TT.CryptoInfo.Services.Interface;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DCT.TT.CryptoInfo.ViewModels

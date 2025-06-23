@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DCT.TT.CryptoInfo.Services.Interface;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace DCT.TT.CryptoInfo.Services
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
             services.AddSingleton<PageService>();
+            services.AddSingleton<ICryptoApiService, CryptoApiService>();
             //register services
             return services;
         }
