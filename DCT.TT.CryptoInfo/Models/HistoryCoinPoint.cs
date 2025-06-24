@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace DCT.TT.CryptoInfo.Models
 {
     internal class HistoryCoinPoint
     {
-        [JsonPropertyName("data")]
+        [JsonProperty("data")]
         public List<PointCoin> HistoryCoin { get; set; }
     }
 }

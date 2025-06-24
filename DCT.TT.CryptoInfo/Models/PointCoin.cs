@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace DCT.TT.CryptoInfo.Models
 {
     internal class PointCoin
     {
-        [JsonPropertyName("priceUsd")]
+        [JsonProperty("priceUsd")]
         public double PriceUsd { get; set; }
-        [JsonPropertyName("time")]
+        [JsonProperty("time")]
         public long TimeStamp { get; set; }
-        [JsonPropertyName("date")]
+        [JsonProperty("date")]
         public DateTime Date { get; set; }
     }
 }
