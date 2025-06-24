@@ -4,26 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace DCT.TT.CryptoInfo.Models
 {
     internal class CoinModel
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
-        [JsonPropertyName("rank")]
-        public int Rank { get; set; }
-        [JsonPropertyName("symbol")]
+        [JsonProperty("rank")]
+        public string Rank { get; set; }
+        [JsonProperty("symbol")]
         public string Symbol { get; set; }
-        [JsonPropertyName("name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
-        [JsonPropertyName("marketCapUsd")]
+        [JsonProperty("marketCapUsd")]
         public double MarketCapUsd { get; set; }
-        [JsonPropertyName("priceUsd")]
+        [JsonProperty("priceUsd")]
         public double PriceUsd { get; set; }
-        [JsonPropertyName("changePercent24Hr")]
+        [JsonProperty("changePercent24Hr")]
         public double ChangePercent24Hr { get; set; }
-        [JsonPropertyName("volumeUsd24Hr")]
+        [JsonProperty("volumeUsd24Hr")]
         public double VolumeUsd24Hr { get; set; }
     }
 }
