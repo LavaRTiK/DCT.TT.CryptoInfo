@@ -32,8 +32,15 @@ namespace DCT.TT.CryptoInfo.Services
 
         public async Task<HistoryCoinPoint> ExcuteHistoryCoin(string id, string interval = "m30")
         {
-            return JsonConvert.DeserializeObject<HistoryCoinPoint>(
-                await _httpClient.GetStringAsync($"/v3/assets/{id}/history?interval={interval}"));
+            try
+            {
+                return JsonConvert.DeserializeObject<HistoryCoinPoint>(
+                    await _httpClient.GetStringAsync($"/v3/assets/{id}/history?interval={interval}"));
+            }
+            catch
+            {
+                return null;
+            }
         }
         public async Task<List<CoinModel>> ExecuteCryptoAsync(int limitCount = 10)
         {
@@ -42,8 +49,16 @@ namespace DCT.TT.CryptoInfo.Services
             //string requstBody = await renponse.Content.ReadAsStringAsync();
             //List<CoinModel> coinList = JsonSerializer.Deserialize<ParseDataJson>(requstBody).listCoin;
             //+читабильность оу ейс
-            return JsonConvert.DeserializeObject<ParseDataJson>(await _httpClient.GetStringAsync("/v3/assets"))
-                .listCoin;
+            try
+            {
+                return JsonConvert.DeserializeObject<ParseDataJson>
+                        (await _httpClient.GetStringAsync("/v3/assets"))
+                    .listCoin;
+            }
+            catch
+            {
+                return null;
+            }
             //return JsonSerializer.Deserialize<ParseDataJson>(await _httpClient.GetStringAsync("/v3/assets")).listCoin;
         }
     }

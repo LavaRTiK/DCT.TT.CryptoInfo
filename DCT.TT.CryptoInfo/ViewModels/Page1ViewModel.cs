@@ -205,27 +205,62 @@ namespace DCT.TT.CryptoInfo.ViewModels
         }
         private async Task LoadDataCryptoAsync()
         {
-            ListCrypto = await _serviceCryptoApiService.ExecuteCryptoAsync(10);
+            if (await _serviceCryptoApiService.ExecuteCryptoAsync(10) is { } data)
+                ListCrypto = data;
         }
-
         private async Task LoadDataCryptoHistoryAsync()
         {
             //Hardcode 
-            CryptoDiagram1 =initModel((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[0].Id)).HistoryCoin);
-            NameCoinDiagram1 = ListCrypto[0].Name;
-            SymbolDiagram1 = ListCrypto[0].Symbol;
+            if ((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[0].Id)).HistoryCoin is {} dataCoin1)
+            {
+                CryptoDiagram1 = initModel(dataCoin1);
+                NameCoinDiagram1 = ListCrypto[0].Name;
+                SymbolDiagram1 = ListCrypto[0].Symbol;
+            }
+            if ((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[1].Id)).HistoryCoin is { } dataCoin2)
+            { 
+                CryptoDiagram2 = initModel(dataCoin2);
+                NameCoinDiagram2 = ListCrypto[1].Name;
+                SymbolDiagram2 = ListCrypto[1].Symbol;
+            }
+            if ((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[2].Id)).HistoryCoin is { } dataCoin3)
+            {
+                CryptoDiagram3 = initModel(dataCoin3);
+                NameCoinDiagram3 = ListCrypto[2].Name;
+                SymbolDiagram3 = ListCrypto[2].Symbol;
+            }
 
-            CryptoDiagram2 = initModel((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[1].Id)).HistoryCoin);
-            NameCoinDiagram2 = ListCrypto[1].Name;
-            SymbolDiagram2 = ListCrypto[1].Symbol;
-
-            CryptoDiagram3 = initModel((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[2].Id)).HistoryCoin);
-            NameCoinDiagram3 = ListCrypto[2].Name;
-            SymbolDiagram3 = ListCrypto[2].Symbol;
+            if (CryptoDiagram1 is null && CryptoDiagram2 is null && CryptoDiagram3 is null)
+            {
+                var dataPoin = new List<PointCoin>();
+                PointCoin point1 = new PointCoin()
+                {
+                    Date = Convert.ToDateTime("2024-06-21T00:00:00.000Z"),
+                    PriceUsd = 61211.9141206542938147,
+                    TimeStamp = 1718928000000,
+                };
+                PointCoin point2 = new PointCoin()
+                {
+                    Date = Convert.ToDateTime("2024-06-22T00:00:00.000Z"),
+                    PriceUsd = 64271.1040065361808159,
+                    TimeStamp = 1718928000000,
+                };
+                PointCoin point3 = new PointCoin()
+                {
+                    Date = Convert.ToDateTime("2024-06-23T00:00:00.000Z"),
+                    PriceUsd = 69317.2628176820675963,
+                    TimeStamp = 1719014400000,
+                };
+                dataPoin.Add(point1);
+                dataPoin.Add(point2);
+                dataPoin.Add(point3);
+                CryptoDiagram1 = initModel(dataPoin);
+                CryptoDiagram2 = initModel(dataPoin);
+                CryptoDiagram3 = initModel(dataPoin);
+            }
         }
         private PlotModel initModel(List<PointCoin> dataPoin)
         {
-            
             var min = dataPoin.Min(p => p.PriceUsd);
             var max = dataPoin.Max(p => p.PriceUsd);
             var model = new PlotModel
@@ -248,7 +283,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
                 IsPanEnabled = false,
                 IsAxisVisible = false,
                 StartPosition = 0,
-                EndPosition = 0.6,
+                EndPosition = 0.5,
             });
             model.Axes.Add(new DateTimeAxis
             {
