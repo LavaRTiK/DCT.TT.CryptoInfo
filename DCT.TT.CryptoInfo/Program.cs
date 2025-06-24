@@ -24,7 +24,6 @@ namespace DCT.TT.CryptoInfo
                 cfg.AddJsonFile("appsettings.json", true, reloadOnChange: true);
             });
             hostBuilder.ConfigureServices(App.ConfigureServices);
-
             return hostBuilder;
         }
     }

@@ -22,7 +22,7 @@
             <StatusBarItem>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Ellipse Width="30" Height="30" Stroke="Black" StrokeThickness="2" Fill="Yellow"></Ellipse>
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Onflie</TextBlock>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Offline</TextBlock>
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>

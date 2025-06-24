@@ -7,10 +7,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Policy;
 using System.Text;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.Animation;
+using Newtonsoft.Json;
 
 namespace DCT.TT.CryptoInfo.Services
 {
@@ -19,7 +19,7 @@ namespace DCT.TT.CryptoInfo.Services
         private string _token = "59fc2fa78469cf29f68fb8a39cba808611f813b87a2a652d69491a6742b3f2bb";
         private HttpClient _httpClient;
 
-        private CryptoApiService(HttpClient httpClient)
+        public CryptoApiService(HttpClient httpClient)
         {
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri("https://rest.coincap.io/v3/");
@@ -30,6 +30,11 @@ namespace DCT.TT.CryptoInfo.Services
             return null;
         }
 
+        public async Task<HistoryCoinPoint> ExcuteHistoryCoin(string id, string interval = "m30")
+        {
+            return JsonConvert.DeserializeObject<HistoryCoinPoint>(
+                await _httpClient.GetStringAsync($"/v3/assets/{id}/history?interval={interval}"));
+        }
         public async Task<List<CoinModel>> ExecuteCryptoAsync(int limitCount = 10)
         {
             //using HttpResponseMessage renponse = await _httpClient.GetAsync("/v3/assets");
@@ -37,7 +42,9 @@ namespace DCT.TT.CryptoInfo.Services
             //string requstBody = await renponse.Content.ReadAsStringAsync();
             //List<CoinModel> coinList = JsonSerializer.Deserialize<ParseDataJson>(requstBody).listCoin;
             //+читабильность оу ейс
-            return JsonSerializer.Deserialize<ParseDataJson>(await _httpClient.GetStringAsync("/v3/assets")).listCoin;
+            return JsonConvert.DeserializeObject<ParseDataJson>(await _httpClient.GetStringAsync("/v3/assets"))
+                .listCoin;
+            //return JsonSerializer.Deserialize<ParseDataJson>(await _httpClient.GetStringAsync("/v3/assets")).listCoin;
         }
     }
 }

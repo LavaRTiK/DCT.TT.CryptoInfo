@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace DCT.TT.CryptoInfo.Services
     {
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
+            services.AddSingleton<HttpClient>();
             services.AddSingleton<PageService>();
             services.AddSingleton<ICryptoApiService, CryptoApiService>();
             //register services
