@@ -1,0 +1,87 @@
+﻿<Page x:Class="DCT.TT.CryptoInfo.Views.Page.DetailCryptoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:fa="http://schemas.fontawesome.com/icons/"
+      xmlns:local="clr-namespace:DCT.TT.CryptoInfo.Views.Page"
+      xmlns:oxy="http://oxyplot.org/wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DetailCryptoPage">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#2d2d30" Offset="0" />
+                <GradientStop Color="#252526" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="81*"/>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="172*"/>
+            <RowDefinition Height="104*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" Margin="20,0,0,0" Height="20" Width="53">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Solid_ArrowLeft" Width="16" Height="16" Foreground="White" />
+                <TextBlock Text="Назад"  Foreground="White"/>
+            </StackPanel>
+        </Button>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" Height="53" Width="83">
+            <TextBlock FontSize="24" FontWeight="Bold" Foreground="White">BitCoin</TextBlock>
+            <TextBlock FontSize="16" Foreground="White">BTC</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="363,0,0,0" Height="43" Width="201">
+            <Button Margin="10" Padding="3">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#5a5a5a" Offset="0" />
+                        <GradientStop Color="#494949" Offset="1" />
+                    </LinearGradientBrush>
+                </Button.Background>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Regular_Heart" Width="15" Height="15" Foreground="White"/>
+                    <TextBlock VerticalAlignment="Center" Text="В избраные" Foreground="White"></TextBlock>
+
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="3">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#5a5a5a" Offset="0" />
+                        <GradientStop Color="#494949" Offset="1" />
+                    </LinearGradientBrush>
+                </Button.Background>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Solid_ShareAlt" Width="15" Height="15" Foreground="White"></fa:ImageAwesome>
+                    <TextBlock Text="Поделлиться" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="20,10,0,0">
+            <TextBox Background="Transparent" FontSize="30" Foreground="White" FontWeight="Bold">$42,856.23</TextBox>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Background="Transparent" Foreground="Green" FontSize="18">+2.34%</TextBox>
+                <TextBlock Background="Transparent" Foreground="Gray" FontSize="16" FontWeight="Normal" Text="За последние 24ч" VerticalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+        <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1" Columns="5" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+            <Button Content="1Ч" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Padding="10" Margin="5,0,5,0"/>
+            <Button Content="24Ч" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14"/>
+            <Button Content="1H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14"/>
+            <Button Content="1М" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14"/>
+            <Button Content="1Г" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14"/>
+        </UniformGrid>
+        <!--<oxy:PlotView Grid.Row="2" Grid.ColumnSpan="2" Model="{Binding SelectDiagram}" Background="Transparent"/>-->
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" FontSize="32" Text="Тут диаграма" Foreground="White"></TextBlock>
+    </Grid>
+</Page>

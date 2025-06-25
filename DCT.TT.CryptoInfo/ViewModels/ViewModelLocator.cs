@@ -11,5 +11,8 @@ namespace DCT.TT.CryptoInfo.ViewModels
     {
         public MainWindowViewModel MainWindowModel => App.Services.GetRequiredService<MainWindowViewModel>();
         public Page1ViewModel Page1Model => App.Services.GetRequiredService<Page1ViewModel>();
+
+        public DetailCryptoPageViewModel DetailCryptoPageModel =>
+            App.Services.GetRequiredService<DetailCryptoPageViewModel>();
     }
 }

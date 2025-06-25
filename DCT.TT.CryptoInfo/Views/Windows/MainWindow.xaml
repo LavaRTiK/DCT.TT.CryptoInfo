@@ -40,6 +40,7 @@
             <Separator Grid.Row="1" VerticalAlignment="Top" Margin="10,0,10,0" Height="1"/>
             <Frame Grid.Row="1" Content="{Binding PageSource}"  NavigationUIVisibility="Hidden" Margin="0,5,0,0"/>
         </Grid>
+        <!--сделать команду для смена страницы и придумать как передавать даные -->
         <!--<Frame Content="{Binding PageSource}"  NavigationUIVisibility="Hidden"/>-->
     </DockPanel>
 </Window>

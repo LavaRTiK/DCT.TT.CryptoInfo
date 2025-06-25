@@ -83,7 +83,7 @@
             <RowDefinition Height="47*"/>
             <RowDefinition Height="124*"/>
         </Grid.RowDefinitions>
-        
+
         <TextBox Style="{DynamicResource TextBoxStyleSearch}" x:Name="search" Background="#333333" BorderBrush="#3f3f46" BorderThickness="1" FontSize="16" Foreground="White" Margin="10,0,41,0" Padding="16,8,40,8" VerticalAlignment="Center" Height="38" />
         <fa:ImageAwesome IsHitTestVisible="False" Icon="Solid_Search" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20" Margin="200,0,0,0"/>
         <TextBlock IsHitTestVisible="False" FontSize="16" Foreground="Gray" Text="Пошук криптовлюти..." VerticalAlignment="Center" Margin="15,0,0,0" Height="22">
@@ -107,7 +107,7 @@
                 <oxy:PlotView Model="{Binding CryptoDiagram1}" Background="Transparent"/>
             </Grid>
         </Border>
-        
+
         <Border Grid.Row="2" Grid.Column="1" BorderBrush="#3f3f46" BorderThickness="1" Margin="10,10,10,10" CornerRadius="5">
             <Grid>
                 <TextBlock IsHitTestVisible="True" Style="{DynamicResource DefualtText}" FontWeight="SemiBold" Text="Bitcoin" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,10,0,0"/>
@@ -124,8 +124,8 @@
         </Border>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Список криптовалют" Style="{DynamicResource DefualtText}" Margin="10,10,0,0"/>
         <ScrollViewer Grid.Row="4" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True" BorderBrush="Transparent" Background="Transparent">
-        <ListView Background="Transparent" BorderThickness="0" FontSize="16" FontWeight="Medium" Foreground="White" ItemsSource="{Binding ListCrypto}" BorderBrush="Transparent">
-            <ListView.Resources>
+            <ListView Background="Transparent" BorderThickness="0" FontSize="16" FontWeight="Medium" Foreground="White" ItemsSource="{Binding ListCrypto}" BorderBrush="Transparent">
+                <ListView.Resources>
                     <Style TargetType="{x:Type GridViewColumnHeader}">
                         <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
                         <Setter Property="Padding" Value="16,12"></Setter>
@@ -135,40 +135,43 @@
                         <Setter Property="BorderThickness" Value="0"></Setter>
                     </Style>
                 </ListView.Resources>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="#" DisplayMemberBinding="{Binding  Rank}"></GridViewColumn>
-                    <GridViewColumn Header="Название">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="#" DisplayMemberBinding="{Binding  Rank}"></GridViewColumn>
+                        <GridViewColumn Header="Название">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
                                         <TextBlock Text="{Binding Name}"/>
                                         <TextBlock Text="{Binding Symbol}" FontSize="12" Foreground="Gray"></TextBlock>
                                     </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding PriceUsd,StringFormat='${0:0.##}'}"></GridViewColumn>
-                    <GridViewColumn Header="24ч %">
-                        <GridViewColumn.CellTemplate>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding PriceUsd,StringFormat='${0:0.##}'}"></GridViewColumn>
+                        <GridViewColumn Header="24ч %">
+                            <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding ChangePercent24Hr,StringFormat={}{0:0.##}%}" Foreground="{Binding ChangePercent24Hr,Converter={StaticResource PercentBrushConvector}}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                        </GridViewColumn>
                         <GridViewColumn Header="Рыночная капитализация" DisplayMemberBinding="{Binding MarketCapUsd,Converter={StaticResource NumberToShort}}"></GridViewColumn>
                         <GridViewColumn Header="Объем (24ч)" DisplayMemberBinding="{Binding VolumeUsd24Hr,Converter={StaticResource NumberToShort}}"></GridViewColumn>
-                    <GridViewColumn Header="Действия">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <!-- тут не зыбать команду и параметр-->
-                                <Button Content="подробноее команда для id"></Button>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+                        <GridViewColumn Header="Действия">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!-- тут не зыбать команду и параметр-->
+                                    <StackPanel>
+                                        <Button Content="test" Command="{Binding DataContext.SelectCryptoCommand,RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding Id}"></Button>
+                                        <TextBlock Text="{Binding Id}" Foreground="White"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </ScrollViewer>
     </Grid>
 </Page>

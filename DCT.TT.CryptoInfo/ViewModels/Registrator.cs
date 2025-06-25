@@ -17,6 +17,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
             service.AddSingleton<MainWindowViewModel>();
             service.AddSingleton<CryptoStatiscticViewModel>();
             service.AddSingleton<Page1ViewModel>();
+            service.AddSingleton<DetailCryptoPageViewModel>();
 
             return service;
         }
