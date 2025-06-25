@@ -22,8 +22,16 @@ namespace DCT.TT.CryptoInfo.ViewModels
         #region page
 
         private readonly PageService _pageService;
-        public Page PageSource { get; set; }
+        private Page _pageSource;
 
+        public Page PageSource
+        {
+            get => _pageSource;
+            set
+            {
+                Set(ref _pageSource,value);
+            }
+        }
         #endregion
         #region Titel
         private string _Title = "Crypto Info App";
