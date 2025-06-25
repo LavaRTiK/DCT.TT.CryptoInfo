@@ -15,18 +15,17 @@ namespace DCT.TT.CryptoInfo.Infrastructure.Commands
         public LambdaCommand(Action Execute,Func<bool> CanExecute = null)
         :this(p => Execute(),CanExecute is null ? (Func<object,bool>)null : p => CanExecute())
         {
-            //_execute = Execute ?? throw new ArgumentNullException(nameof(Execute ));
-            //_canExecute = CanExecute;
+
         }
 
-        public LambdaCommand(Action<object> Execute, Func<object, bool> CanExecute)
+        public LambdaCommand(Action<object> Execute, Func<object, bool> CanExecute = null)
         {
-            _execute = Execute ?? throw new ArgumentNullException(nameof(Execute ));
+            _execute = Execute;
             _canExecute = CanExecute;
         }
 
-        public override bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true; 
+        protected override bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true; 
 
-        public override void Execute(object parameter) => _execute(parameter); 
+        protected override void Execute(object parameter) => _execute(parameter); 
     }
 }

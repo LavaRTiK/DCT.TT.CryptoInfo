@@ -6,8 +6,8 @@ namespace DCT.TT.CryptoInfo.Infrastructure.Commands
 {
     internal class CloseWindowCommand : Command
     {
-        public override bool CanExecute(object parameter) => true;
-        public override void Execute(object parameter)
+        protected override bool CanExecute(object parameter) => true;
+        protected override void Execute(object parameter)
         {
             Application.Current.Shutdown();
         }

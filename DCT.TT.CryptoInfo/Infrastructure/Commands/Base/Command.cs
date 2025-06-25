@@ -9,34 +9,37 @@ namespace DCT.TT.CryptoInfo.Infrastructure.Commands.Base
 {
     internal abstract class Command : ICommand
     {
-        public event EventHandler CanExecuteChanged
+        private bool _Executable = true;
+
+        public bool Executable
+        {
+            get => _Executable;
+            set
+            {
+                if (_Executable == value) return;
+                _Executable = value;
+                ExecutableChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        public event EventHandler ExecutableChanged;
+
+        event EventHandler ICommand.CanExecuteChanged
         {
             add => CommandManager.RequerySuggested += value;
             remove => CommandManager.RequerySuggested -= value;
         }
 
-        private bool _executable;
-
-        public bool Executable
-        {
-            get => _executable;
-            set
-            {
-                if (_executable == value) return;
-                _executable = value;
-                CommandManager.InvalidateRequerySuggested();
-            }
-        }
-
-        bool ICommand.CanExecute(object parameter) => _executable && CanExecute(parameter);
+        bool ICommand.CanExecute(object parameter) => _Executable && CanExecute(parameter);
 
         void ICommand.Execute(object parameter)
         {
-            if(CanExecute(parameter))
-                Execute(parameter);
+            if (!((ICommand)this).CanExecute(parameter)) return;
+            Execute(parameter);
         }
-        public virtual bool CanExecute(object parameter) => true;
 
-        public abstract void Execute(object parameter);
+        protected virtual bool CanExecute(object p) => true;
+
+        protected abstract void Execute(object p);
     }
 }
