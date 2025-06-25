@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="DetailCryptoPage_AddToFavorites_btn">Add to favorites</v:String>
+    <v:String x:Key="DetailCryptoPage_Back_btn">Back</v:String>
+    <v:String x:Key="DetailCryptoPage_Share_btn">Share</v:String>
+    <v:String x:Key="MainWindow_News_btn">News</v:String>
+    <v:String x:Key="MainWindow_Portfolio_btn">Portfolio</v:String>
+    <v:String x:Key="MainWindow_Review_btn">Review</v:String>
+    <v:String x:Key="MainWindow_Setting_btn">Setting</v:String>
+    <v:String x:Key="Page1_24h_tabel">(24 h)</v:String>
+    <v:String x:Key="Page1_ListOfCryptocurrencies_label">List of cryptocurrencies</v:String>
+    <v:String x:Key="Page1_MarketCapitalization_tabel">Market capitalization</v:String>
+    <v:String x:Key="Page1_MarketOverview_label">Market overview</v:String>
+    <v:String x:Key="Page1_Price_tabel">Price</v:String>
+    <v:String x:Key="Page1_Review_tabel">Review</v:String>
+    <v:String x:Key="Page1_Title_tabel">Title</v:String>
+    <v:String x:Key="Page1_Volume24h_tabel">Volume(24h)</v:String>
+</ResourceDictionary>

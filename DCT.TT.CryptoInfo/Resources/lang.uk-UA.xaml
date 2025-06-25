@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="DetailCryptoPage_AddToFavorites_btn">Додати в обране</v:String>
+    <v:String x:Key="DetailCryptoPage_Back_btn">Назад</v:String>
+    <v:String x:Key="DetailCryptoPage_Share_btn">Поділитися</v:String>
+    <v:String x:Key="MainWindow_News_btn">Новини</v:String>
+    <v:String x:Key="MainWindow_Portfolio_btn">Портфель</v:String>
+    <v:String x:Key="MainWindow_Review_btn">Огляд</v:String>
+    <v:String x:Key="MainWindow_Setting_btn">Налаштування</v:String>
+    <v:String x:Key="Page1_24h_tabel">(24 г)</v:String>
+    <v:String x:Key="Page1_ListOfCryptocurrencies_label">Список криптовалют</v:String>
+    <v:String x:Key="Page1_MarketCapitalization_tabel">Ринкова капіталізація</v:String>
+    <v:String x:Key="Page1_MarketOverview_label">Огляд ринку</v:String>
+    <v:String x:Key="Page1_Price_tabel">Ціна</v:String>
+    <v:String x:Key="Page1_Review_tabel">Огляд</v:String>
+    <v:String x:Key="Page1_Title_tabel">Назва</v:String>
+    <v:String x:Key="Page1_Volume24h_tabel">Обсяг (24г)</v:String>
+</ResourceDictionary>
