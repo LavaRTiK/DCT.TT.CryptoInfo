@@ -8,6 +8,7 @@ namespace DCT.TT.CryptoInfo.Infrastructure.Enums
 {
     internal enum Localization
     {
+        None,
         UA,
         EN,
     }
