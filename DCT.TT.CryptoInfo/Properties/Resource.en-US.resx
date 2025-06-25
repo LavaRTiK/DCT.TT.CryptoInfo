@@ -118,48 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DetailCryptoPage_AddToFavorites_btn" xml:space="preserve">
-    <value>Додати в обране</value>
+    <value>Add to Favorites</value>
   </data>
   <data name="DetailCryptoPage_Back_btn" xml:space="preserve">
-    <value>Назад</value>
+    <value>Back</value>
   </data>
   <data name="DetailCryptoPage_Share_btn" xml:space="preserve">
-    <value>Поділитися</value>
+    <value>Share</value>
   </data>
   <data name="MainWindow_News_btn" xml:space="preserve">
-    <value>Новини</value>
+    <value>News</value>
   </data>
   <data name="MainWindow_Portfolio_btn" xml:space="preserve">
-    <value>Портфель</value>
+    <value>Portfolio</value>
   </data>
   <data name="MainWindow_Review_btn" xml:space="preserve">
-    <value>Огляд</value>
+    <value>Review</value>
   </data>
   <data name="MainWindow_Setting_btn" xml:space="preserve">
-    <value>Налаштування</value>
+    <value>Setting</value>
   </data>
   <data name="Page1_24h_tabel" xml:space="preserve">
-    <value>24г %</value>
+    <value>24h</value>
   </data>
   <data name="Page1_ListOfCryptocurrencies_label" xml:space="preserve">
-    <value>Список криптовалют</value>
+    <value>List of cryptocurrencies</value>
   </data>
   <data name="Page1_MarketCapitalization_tabel" xml:space="preserve">
-    <value>Ринкова капітилізація</value>
+    <value>Market capitalization</value>
   </data>
   <data name="Page1_MarketOverview_label" xml:space="preserve">
-    <value>Огляд ринку</value>
+    <value>Market overview</value>
   </data>
   <data name="Page1_Price_tabel" xml:space="preserve">
-    <value>Ціна</value>
+    <value>Price</value>
   </data>
   <data name="Page1_Review_tabel" xml:space="preserve">
-    <value>Огляд</value>
+    <value>Review</value>
   </data>
   <data name="Page1_Title_tabel" xml:space="preserve">
-    <value>Назва</value>
+    <value>Title</value>
   </data>
   <data name="Page1_Volume24h_tabel" xml:space="preserve">
-    <value>Обсяг (24г)</value>
+    <value>Volume (24h)</value>
   </data>
 </root>

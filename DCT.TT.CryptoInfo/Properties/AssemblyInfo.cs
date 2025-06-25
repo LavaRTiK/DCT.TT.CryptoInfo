@@ -7,6 +7,7 @@ using System.Windows;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набор атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
+[assembly: NeutralResourcesLanguage("uk-UA")]
 [assembly: AssemblyTitle("DCT.TT.CryptoInfo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
