@@ -14,10 +14,10 @@ namespace DCT.TT.CryptoInfo.ViewModels
         public static IServiceCollection RegisterViewModels(this IServiceCollection service)
         {
             //register ViewModels
-            service.AddSingleton<MainWindowViewModel>();
-            service.AddSingleton<CryptoStatiscticViewModel>();
-            service.AddSingleton<Page1ViewModel>();
-            service.AddSingleton<DetailCryptoPageViewModel>();
+            service.AddTransient<MainWindowViewModel>();
+            service.AddTransient<CryptoStatiscticViewModel>();
+            service.AddTransient<Page1ViewModel>();
+            service.AddTransient<DetailCryptoPageViewModel>();
 
             return service;
         }

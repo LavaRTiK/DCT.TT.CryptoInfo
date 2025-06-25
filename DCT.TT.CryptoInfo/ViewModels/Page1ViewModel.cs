@@ -1,6 +1,12 @@
-﻿using DCT.TT.CryptoInfo.Models;
+﻿using DCT.TT.CryptoInfo.Infrastructure.Commands;
+using DCT.TT.CryptoInfo.Models;
+using DCT.TT.CryptoInfo.Services;
+using DCT.TT.CryptoInfo.Services.Interface;
 using DCT.TT.CryptoInfo.ViewModels.Base;
+using DCT.TT.CryptoInfo.Views.Page;
 using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Legends;
 using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
@@ -11,16 +17,12 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Navigation;
-using DCT.TT.CryptoInfo.Infrastructure.Commands;
-using DCT.TT.CryptoInfo.Services;
-using DCT.TT.CryptoInfo.Services.Interface;
-using DCT.TT.CryptoInfo.Views.Page;
-using OxyPlot.Axes;
-using OxyPlot.Legends;
 
 namespace DCT.TT.CryptoInfo.ViewModels
 {
+    [MarkupExtensionReturnType(typeof(Page1ViewModel))]
     internal class Page1ViewModel : ViewModelBase
     {
         private readonly ICryptoApiService _serviceCryptoApiService;
@@ -195,33 +197,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
             SelectCryptoCommand = new LambdaCommand(OnSelectCryptoCommandExecuted, CanSelectCryptoCommandExecute);
 
             #endregion
-            //Console.WriteLine("TEST TE3ST");
             InitAsync();
-            //var dataPoin = new List<PointCoin>();
-            //PointCoin point1 = new PointCoin()
-            //{
-            //    Date = Convert.ToDateTime("2024-06-21T00:00:00.000Z"),
-            //    PriceUsd = 61211.9141206542938147,
-            //    TimeStamp = 1718928000000,
-            //};
-            //PointCoin point2 = new PointCoin()
-            //{
-            //    Date = Convert.ToDateTime("2024-06-22T00:00:00.000Z"),
-            //    PriceUsd = 64271.1040065361808159,
-            //    TimeStamp = 1718928000000,
-            //};
-            //PointCoin point3 = new PointCoin()
-            //{
-            //    Date = Convert.ToDateTime("2024-06-23T00:00:00.000Z"),
-            //    PriceUsd = 69317.2628176820675963,
-            //    TimeStamp = 1719014400000,
-            //};
-            //dataPoin.Add(point1);
-            //dataPoin.Add(point2);
-            //dataPoin.Add(point3);
-            //CryptoDiagram1 = initModel(dataPoin);
-            //CryptoDiagram2 = initModel(dataPoin);
-            //CryptoDiagram3 = initModel(dataPoin);
         }
 
         private void UpdateDiagram()

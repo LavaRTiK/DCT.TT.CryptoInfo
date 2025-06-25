@@ -8,8 +8,8 @@
       xmlns:oxy="http://oxyplot.org/wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      DataContext="{Binding DetailCryptoPageModel,Source={StaticResource Locator}}"
       Title="DetailCryptoPage">
-
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -29,7 +29,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" Margin="20,0,0,0" Height="20" Width="53">
+        <Button Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" Margin="20,0,0,0" Height="20" Width="53" Command="{Binding ChangePageBack}">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Solid_ArrowLeft" Width="16" Height="16" Foreground="White" />
                 <TextBlock Text="Назад"  Foreground="White"/>
