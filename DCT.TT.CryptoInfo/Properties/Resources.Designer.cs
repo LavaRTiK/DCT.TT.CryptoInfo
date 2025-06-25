@@ -22,7 +22,7 @@ namespace DCT.TT.CryptoInfo.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace DCT.TT.CryptoInfo.Properties {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DCT.TT.CryptoInfo.Properties.Resources", typeof(Resources).Assembly);
@@ -51,147 +51,12 @@ namespace DCT.TT.CryptoInfo.Properties {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Додати в обране.
-        /// </summary>
-        public static string DetailCryptoPage_AddToFavorites_btn {
-            get {
-                return ResourceManager.GetString("DetailCryptoPage_AddToFavorites_btn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Назад.
-        /// </summary>
-        public static string DetailCryptoPage_Back_btn {
-            get {
-                return ResourceManager.GetString("DetailCryptoPage_Back_btn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Поділитися.
-        /// </summary>
-        public static string DetailCryptoPage_Share_btn {
-            get {
-                return ResourceManager.GetString("DetailCryptoPage_Share_btn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Новини.
-        /// </summary>
-        public static string MainWindow_News_btn {
-            get {
-                return ResourceManager.GetString("MainWindow_News_btn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Портфель.
-        /// </summary>
-        public static string MainWindow_Portfolio_btn {
-            get {
-                return ResourceManager.GetString("MainWindow_Portfolio_btn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Огляд.
-        /// </summary>
-        public static string MainWindow_Review_btn {
-            get {
-                return ResourceManager.GetString("MainWindow_Review_btn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Налаштування.
-        /// </summary>
-        public static string MainWindow_Setting_btn {
-            get {
-                return ResourceManager.GetString("MainWindow_Setting_btn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на 24г %.
-        /// </summary>
-        public static string Page1_24h_tabel {
-            get {
-                return ResourceManager.GetString("Page1_24h_tabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Список криптовалют.
-        /// </summary>
-        public static string Page1_ListOfCryptocurrencies_label {
-            get {
-                return ResourceManager.GetString("Page1_ListOfCryptocurrencies_label", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Ринкова капітилізація.
-        /// </summary>
-        public static string Page1_MarketCapitalization_tabel {
-            get {
-                return ResourceManager.GetString("Page1_MarketCapitalization_tabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Огляд ринку.
-        /// </summary>
-        public static string Page1_MarketOverview_label {
-            get {
-                return ResourceManager.GetString("Page1_MarketOverview_label", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Ціна.
-        /// </summary>
-        public static string Page1_Price_tabel {
-            get {
-                return ResourceManager.GetString("Page1_Price_tabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Огляд.
-        /// </summary>
-        public static string Page1_Review_tabel {
-            get {
-                return ResourceManager.GetString("Page1_Review_tabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Назва.
-        /// </summary>
-        public static string Page1_Title_tabel {
-            get {
-                return ResourceManager.GetString("Page1_Title_tabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Обсяг (24г).
-        /// </summary>
-        public static string Page1_Volume24h_tabel {
-            get {
-                return ResourceManager.GetString("Page1_Volume24h_tabel", resourceCulture);
             }
         }
     }
