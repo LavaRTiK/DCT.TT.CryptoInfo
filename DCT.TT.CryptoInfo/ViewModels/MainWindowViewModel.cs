@@ -60,10 +60,12 @@ namespace DCT.TT.CryptoInfo.ViewModels
         #endregion
         public MainWindowViewModel(PageService pageService)
         {
+            //TEST
             Debug.WriteLine(System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
             _pageService = pageService;
             _pageService.OnPageChanged += (page) => PageSource = page;
-            _pageService.ChangePage(new Page1());
+            //_pageService.ChangePage(new Page1());
+            _pageService.ChangePage(new SettingsPage());
             #region Commands
             CloseApplicationCommand = new LambdaCommand(OnCloseApllicationCommandExecuted,CanCloseApplicationCommandExecute);
             #endregion

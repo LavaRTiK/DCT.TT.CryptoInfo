@@ -157,6 +157,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
             }
         }
         #endregion
+
         #region SymbolDiagram3
         private string _symbolDiagram3;
         public string SymbolDiagram3
