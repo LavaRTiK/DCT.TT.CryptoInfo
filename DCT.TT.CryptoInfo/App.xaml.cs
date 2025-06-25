@@ -36,6 +36,8 @@ namespace DCT.TT.CryptoInfo
 
         protected override async void OnStartup(StartupEventArgs e)
         {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("uk-UA");
             IsDesignMode = false;
             var host = Host;
             base.OnStartup(e);

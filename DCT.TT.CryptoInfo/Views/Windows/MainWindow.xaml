@@ -7,6 +7,7 @@
         xmlns:vm="clr-namespace:DCT.TT.CryptoInfo.ViewModels"
         xmlns:local="clr-namespace:DCT.TT.CryptoInfo"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:rs="clr-namespace:DCT.TT.CryptoInfo.Properties"
         mc:Ignorable="d"
         DataContext="{Binding MainWindowModel,Source={StaticResource Locator}}"
         Title="{Binding Title}"
@@ -32,7 +33,7 @@
                 <RowDefinition Height="185*"/>
             </Grid.RowDefinitions>
             <StackPanel  Orientation="Horizontal" Margin="10,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="23" Width="368" Grid.Row="0">
-                <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Обзор</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White" Content="{x:Static rs:Resources.MainWindow_Review_btn}"></Button>
                 <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Портфолио</Button>
                 <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Новости</Button>
                 <Button Background="Transparent" BorderBrush="Transparent" Padding="10,0,10,0" FontSize="16" FontWeight="Medium" Foreground="White">Настройки</Button>

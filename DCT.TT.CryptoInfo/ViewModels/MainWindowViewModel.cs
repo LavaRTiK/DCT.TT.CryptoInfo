@@ -1,7 +1,10 @@
 ﻿using DCT.TT.CryptoInfo.Infrastructure.Commands;
+using DCT.TT.CryptoInfo.Services;
 using DCT.TT.CryptoInfo.ViewModels.Base;
+using DCT.TT.CryptoInfo.Views.Page;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +12,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using DCT.TT.CryptoInfo.Services;
-using DCT.TT.CryptoInfo.Views.Page;
 
 namespace DCT.TT.CryptoInfo.ViewModels
 {
@@ -59,6 +60,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
         #endregion
         public MainWindowViewModel(PageService pageService)
         {
+            Debug.WriteLine(System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
             _pageService = pageService;
             _pageService.OnPageChanged += (page) => PageSource = page;
             _pageService.ChangePage(new Page1());

@@ -15,10 +15,8 @@ namespace DCT.TT.CryptoInfo.ViewModels
         {
             //register ViewModels
             service.AddTransient<MainWindowViewModel>();
-            service.AddTransient<CryptoStatiscticViewModel>();
             service.AddTransient<Page1ViewModel>();
             service.AddTransient<DetailCryptoPageViewModel>();
-
             return service;
         }
     }

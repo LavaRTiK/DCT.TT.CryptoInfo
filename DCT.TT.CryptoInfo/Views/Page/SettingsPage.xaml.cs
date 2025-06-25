@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DCT.TT.CryptoInfo.Views
+namespace DCT.TT.CryptoInfo.Views.Page
 {
     /// <summary>
-    /// Логика взаимодействия для CryptoStatiscticView.xaml
+    /// Логика взаимодействия для SettingsPage.xaml
     /// </summary>
-    public partial class CryptoStatiscticView : UserControl
+    public partial class SettingsPage : Page
     {
-        public CryptoStatiscticView()
+        public SettingsPage()
         {
             InitializeComponent();
         }
