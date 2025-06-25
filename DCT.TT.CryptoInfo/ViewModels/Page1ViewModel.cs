@@ -4,12 +4,18 @@ using OxyPlot;
 using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Mime;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Navigation;
+using DCT.TT.CryptoInfo.Infrastructure.Commands;
+using DCT.TT.CryptoInfo.Services;
 using DCT.TT.CryptoInfo.Services.Interface;
+using DCT.TT.CryptoInfo.Views.Page;
 using OxyPlot.Axes;
 using OxyPlot.Legends;
 
@@ -18,6 +24,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
     internal class Page1ViewModel : ViewModelBase
     {
         private readonly ICryptoApiService _serviceCryptoApiService;
+        private readonly PageService _pageService;
         #region Property
 
         #region ListTestObject
@@ -136,7 +143,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
         #endregion
         #region NameDiagram3
 
-        
+
 
         private string _nameCoinDiagram3;
         public string NameCoinDiagram3
@@ -161,10 +168,34 @@ namespace DCT.TT.CryptoInfo.ViewModels
         #endregion
         #endregion
 
-        public Page1ViewModel(ICryptoApiService serviceCryptoApi)
+        #region Command
+
+        #region SelecetCryptoCommand
+
+        public ICommand SelectCryptoCommand { get; }
+
+        private bool CanSelectCryptoCommandExecute(object p) => true;
+        private void OnSelectCryptoCommandExecuted(object p)
         {
-            //Console.WriteLine("TEST TE3ST");
+            Debug.WriteLine("псеводо сохранения команды c id:" + p.ToString());
+            _pageService.ChangePage(new DetailCryptoPage());
+            Debug.WriteLine("сменил страницу");
+        }
+        #endregion
+
+        #endregion
+
+        public Page1ViewModel(ICryptoApiService serviceCryptoApi, PageService pageService)
+        {
+
             _serviceCryptoApiService = serviceCryptoApi;
+            _pageService = pageService;
+            #region Command
+
+            SelectCryptoCommand = new LambdaCommand(OnSelectCryptoCommandExecuted, CanSelectCryptoCommandExecute);
+
+            #endregion
+            //Console.WriteLine("TEST TE3ST");
             InitAsync();
             //var dataPoin = new List<PointCoin>();
             //PointCoin point1 = new PointCoin()
@@ -207,29 +238,89 @@ namespace DCT.TT.CryptoInfo.ViewModels
         {
             if (await _serviceCryptoApiService.ExecuteCryptoAsync(10) is { } data)
                 ListCrypto = data;
+            else if (Debugger.IsAttached)
+            {
+                Debug.WriteLine("Заисал мог поект для listCoin");
+                //test object
+                List<CoinModel> listCoin = new List<CoinModel>();
+                listCoin.Add(new CoinModel
+                {
+                    Id = "bitcoin",
+                    Rank = "1",
+                    Symbol = "BTC",
+                    Name = "BitCoin",
+                    MarketCapUsd = 2065776649754.4532176367632261,
+                    PriceUsd = 103898.4932614066056327,
+                    ChangePercent24Hr = 4.6321745238798559,
+                    VolumeUsd24Hr = 101251.5781941297998463
+                });
+                listCoin.Add(new CoinModel
+                {
+                    Id = "ethereum",
+                    Rank = "2",
+                    Symbol = "ETH",
+                    Name = "Ethereum",
+                    MarketCapUsd = 2065776649754.4532176367632261,
+                    PriceUsd = 103898.4932614066056327,
+                    ChangePercent24Hr = 4.6321745238798559,
+                    VolumeUsd24Hr = 101251.5781941297998463
+                });
+                listCoin.Add(new CoinModel
+                {
+                    Id = "xrp",
+                    Rank = "2",
+                    Symbol = "XRP",
+                    Name = "XRP",
+                    MarketCapUsd = 2065776649754.4532176367632261,
+                    PriceUsd = 103898.4932614066056327,
+                    ChangePercent24Hr = 4.6321745238798559,
+                    VolumeUsd24Hr = 101251.5781941297998463
+                });
+                ListCrypto = listCoin;
+
+            }
         }
         private async Task LoadDataCryptoHistoryAsync()
         {
             //Hardcode 
-            if ((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[0].Id)).HistoryCoin is {} dataCoin1)
+            if (ListCrypto is null)
             {
-                CryptoDiagram1 = initModel(dataCoin1);
-                NameCoinDiagram1 = ListCrypto[0].Name;
-                SymbolDiagram1 = ListCrypto[0].Symbol;
+                return;
             }
-            if ((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[1].Id)).HistoryCoin is { } dataCoin2)
-            { 
-                CryptoDiagram2 = initModel(dataCoin2);
-                NameCoinDiagram2 = ListCrypto[1].Name;
-                SymbolDiagram2 = ListCrypto[1].Symbol;
-            }
-            if ((await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[2].Id)).HistoryCoin is { } dataCoin3)
+            var result1 = await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[0].Id);
+            if (result1 != null)
             {
-                CryptoDiagram3 = initModel(dataCoin3);
-                NameCoinDiagram3 = ListCrypto[2].Name;
-                SymbolDiagram3 = ListCrypto[2].Symbol;
+                var dataCoin1 = result1.HistoryCoin;
+                if (dataCoin1 != null)
+                {
+                    CryptoDiagram1 = initModel(dataCoin1);
+                    NameCoinDiagram1 = ListCrypto[0].Name;
+                    SymbolDiagram1 = ListCrypto[0].Symbol;
+                }
             }
-
+            var result2 = await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[1].Id);
+            if (result2 != null)
+            {
+                var dataCoin = result2.HistoryCoin;
+                if (dataCoin != null)
+                {
+                    CryptoDiagram2 = initModel(dataCoin);
+                    NameCoinDiagram2 = ListCrypto[1].Name;
+                    SymbolDiagram2 = ListCrypto[1].Symbol;
+                }
+            }
+            var result3 = await _serviceCryptoApiService.ExcuteHistoryCoin(ListCrypto[2].Id);
+            if (result3 != null)
+            {
+                var dataCoin = result3.HistoryCoin;
+                if (dataCoin != null)
+                {
+                    CryptoDiagram3 = initModel(dataCoin);
+                    NameCoinDiagram3 = ListCrypto[2].Name;
+                    SymbolDiagram3 = ListCrypto[2].Symbol;
+                }
+            }
+            //test object
             if (CryptoDiagram1 is null && CryptoDiagram2 is null && CryptoDiagram3 is null)
             {
                 var dataPoin = new List<PointCoin>();
