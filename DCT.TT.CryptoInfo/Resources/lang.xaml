@@ -20,4 +20,5 @@
     <v:String x:Key="SettingPage_Back_btn">Back</v:String>
     <v:String x:Key="Page1_Actions_tabel">Actions</v:String>
     <v:String x:Key="Page1_SearchForCrypto_placeholeder">Search for cryptocurrencies...</v:String>
+    <v:String x:Key="SettingsPage_Token_label">Token</v:String>
 </ResourceDictionary>

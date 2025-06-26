@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using System.Security.Authentication.ExtendedProtection;
 using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using Newtonsoft.Json;
 
@@ -25,6 +27,18 @@ namespace DCT.TT.CryptoInfo.Services
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri("https://rest.coincap.io/v3/");
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+        }
+
+        public string GetToken()
+        {
+            return _token;
+        }
+        public void SetToken(string token)
+        {
+            if (!string.IsNullOrWhiteSpace(token))
+            {
+                _token = token;
+            }
         }
         public ParseDataJson GetFullDataWithTimeStamp()
         {

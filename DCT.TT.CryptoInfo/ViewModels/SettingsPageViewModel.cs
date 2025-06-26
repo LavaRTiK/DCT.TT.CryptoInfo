@@ -13,15 +13,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using DCT.TT.CryptoInfo.Infrastructure.Commands;
 using DCT.TT.CryptoInfo.Services;
+using DCT.TT.CryptoInfo.Services.Interface;
 using DCT.TT.CryptoInfo.Views.Page;
 
 namespace DCT.TT.CryptoInfo.ViewModels
 {
     internal class SettingsPageViewModel : ViewModelBase
     {
+        private ICryptoApiService _cryptoApiService;
         private readonly PageService _pageService;
         #region Propery
 
+        #region CurrentApiProperty
+
+        private string _currentApi;
+
+        public string CurrentApi
+        {
+            get => _currentApi;
+            set
+            {
+                Set(ref _currentApi, value);
+                Debug.WriteLine("update currentApi");
+                UpdateToken();
+            }
+        }
+
+        #endregion
         #region LocalizationList
         private List<CultureInfo> _localizations;
         public List<CultureInfo> Localizations
@@ -67,20 +85,33 @@ namespace DCT.TT.CryptoInfo.ViewModels
 
         #endregion
 
-        public SettingsPageViewModel(PageService pageService)
+        public SettingsPageViewModel(PageService pageService,ICryptoApiService cryptoApiService)
         {
             _pageService = pageService;
+            _cryptoApiService = cryptoApiService;
+            CurrentApi= _cryptoApiService.GetToken();
             Localizations = App.Languages;
             //private dont update ProprtyChange
             _itemSelectedLocalization = CheckCurrentCulture();
-
             #region Commands
 
             ChangePageBack = new LambdaCommand(OnChangePageBackExcecuted, CanChangePageBackExcecute);
 
             #endregion
         }
-        public CultureInfo CheckCurrentCulture()
+
+        private void UpdateToken()
+        {
+            if (!string.IsNullOrWhiteSpace(CurrentApi))
+            {
+                _cryptoApiService.SetToken(CurrentApi);
+            }
+            else
+            {
+                return;
+            }
+        }
+        private CultureInfo CheckCurrentCulture()
         {
             var culture = System.Threading.Thread.CurrentThread.CurrentUICulture;
             Debug.WriteLine(culture.Name);

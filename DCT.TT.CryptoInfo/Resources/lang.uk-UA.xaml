@@ -20,4 +20,5 @@
     <v:String x:Key="SettingPage_Back_btn">Назад</v:String>
     <v:String x:Key="Page1_Actions_tabel">Дії</v:String>
     <v:String x:Key="Page1_SearchForCrypto_placeholeder">Пошук криптовалюти...</v:String>
+    <v:String x:Key="SettingsPage_Token_label">Ключ</v:String>
 </ResourceDictionary>

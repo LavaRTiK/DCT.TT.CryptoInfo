@@ -15,5 +15,7 @@ namespace DCT.TT.CryptoInfo.Services.Interface
         public Task<List<MarketModel>> GetMarket(string coinId, int limit = 5, int offset = 0);
         public Task<List<CoinModel>> GetCoinsStrSearch(string str);
         public Task<bool> Ping();
+        public void SetToken(string token);
+        public string GetToken();
     }
 }
