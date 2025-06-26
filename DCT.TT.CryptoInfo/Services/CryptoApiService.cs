@@ -67,7 +67,7 @@ namespace DCT.TT.CryptoInfo.Services
             try
             {
                 return JsonConvert.DeserializeObject<ParseDataJson>
-                        (await _httpClient.GetStringAsync("/v3/assets"))
+                        (await _httpClient.GetStringAsync($"/v3/assets?limit{limitCount}"))
                     .listCoin;
             }
             catch

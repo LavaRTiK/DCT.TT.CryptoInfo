@@ -183,7 +183,6 @@
                                     <!-- тут не зыбать команду и параметр-->
                                     <StackPanel>
                                         <Button Content="test" Command="{Binding DataContext.SelectCryptoCommand,RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding Id}"></Button>
-                                        <TextBlock Text="{Binding Id}" Foreground="White"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
