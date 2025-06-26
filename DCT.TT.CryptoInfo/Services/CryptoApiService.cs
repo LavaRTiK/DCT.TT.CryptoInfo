@@ -61,5 +61,40 @@ namespace DCT.TT.CryptoInfo.Services
             }
             //return JsonSerializer.Deserialize<ParseDataJson>(await _httpClient.GetStringAsync("/v3/assets")).listCoin;
         }
+
+        public async Task<CoinModel> ExecuteCryptoSlugId(string id)
+        {
+            if (id is null || string.IsNullOrWhiteSpace(id))
+            {
+                return null;
+            }
+
+            try
+            {
+                return JsonConvert
+                    .DeserializeObject<OnlyOneCoinData>(await _httpClient.GetStringAsync($"/v3/assets/{id}")).CoinModel;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<List<MarketModel>> GetMarket(string coinId, int limit = 5, int offset = 0)
+        {
+            try
+            {
+                var respone =
+                    await _httpClient.GetStringAsync($"/v3/assets/{coinId}/market?limit={limit}&offset={offset}");
+                List<MarketModel> marketModels = JsonConvert.DeserializeObject<DataMarket>(respone).MarketList;
+                return marketModels;
+
+            }
+            catch
+            {
+                return new List<MarketModel>();
+            }
+        }
     }
+
 }
