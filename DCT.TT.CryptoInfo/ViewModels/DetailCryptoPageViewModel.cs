@@ -25,6 +25,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
         private PageService _pageService;
         private readonly ICryptoApiService _cryptoApiService;
         private readonly string _currentId;
+        private int _tabelPageOffset = 0;
         private string _intervalSet = "m30";
         #region Property
 
@@ -97,6 +98,29 @@ namespace DCT.TT.CryptoInfo.ViewModels
 
         #region Command
 
+        #region ChangeOffset
+        public ICommand ChangeOffsetPageCommand { get; }
+        private bool CanChangeOffsetPageCommandExcecute(object p)
+        {
+            if (_tabelPageOffset + Convert.ToInt32(p) < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private async void OnChangeOffsetPageCommandExcecuted(object p)
+        {
+            _tabelPageOffset += Convert.ToInt32(p);
+            Debug.WriteLine(_tabelPageOffset+"<-- current_TABBELPAGEOFFFSET");
+            await LoadMarket();
+
+        }
+
+        #endregion
         #region ChangeTimeDiagramCommand
 
         public ICommand ChangeTimeDiagramCommand { get; }
@@ -106,7 +130,6 @@ namespace DCT.TT.CryptoInfo.ViewModels
         {
             _intervalSet = p.ToString();
             CryptoDiagram1 = null;
-            Debug.WriteLine("start changeTime");
             await LoadDataCryptoHistoryAsync();
         }
         #endregion
@@ -128,8 +151,13 @@ namespace DCT.TT.CryptoInfo.ViewModels
             _gb = gb; 
             _currentId = gb.CurrentSelectedId;
             _pageService = pageService;
+            var test = 5;
+            test += -5;
+            Debug.WriteLine(test);
             #region CommandRegister
 
+            ChangeOffsetPageCommand =
+                new LambdaCommand(OnChangeOffsetPageCommandExcecuted, CanChangeOffsetPageCommandExcecute);
             ChangeTimeDiagramCommand =
                 new LambdaCommand(OnChangeTimeDiagramCommandExcecuted, CanChangeTimeDiagramCommandExcecute);
             ChangePageBackCommand = new LambdaCommand(OnChangePageBackExcecuted, CanChangePageBackExcecute);
@@ -146,6 +174,51 @@ namespace DCT.TT.CryptoInfo.ViewModels
         {
             await LoadDataCrypto();
             await LoadDataCryptoHistoryAsync();
+            await LoadMarket();
+        }
+
+        private async Task LoadMarket()
+        {
+            var  result = await _cryptoApiService.GetMarket(_currentId, limit: 5, _tabelPageOffset);
+            if (result.Count == 0)
+            {
+                result.Add(new MarketModel
+                {
+                    ExchangeId = "Binance",
+                    BaseId = "bitcoin",
+                    QuoteId = "first-digital-usd",
+                    BaseSymbol = "BTC",
+                    QuoteSymbol = "FDUSD",
+                    VolumeUsd24 = 2456986658.1635031000000000,
+                    PriceUsd = 108084.8100000000000000,
+                    VolumePercent = 17.1285198419989211
+                });
+                result.Add(new MarketModel
+                {
+                    ExchangeId = "Binance",
+                    BaseId = "bitcoin",
+                    QuoteId = "tether",
+                    BaseSymbol = "BTC",
+                    QuoteSymbol = "USDT",
+                    VolumeUsd24 = 1726909990.1909699276160000,
+                    PriceUsd = 107931.9624864000000000,
+                    VolumePercent = 12.0388981088084498
+                });
+                result.Add(new MarketModel
+                {
+                    ExchangeId = "BYBIT",
+                    BaseId = "bitcoin",
+                    QuoteId = "tether",
+                    BaseSymbol = "BTC",
+                    QuoteSymbol = "USDT",
+                    VolumeUsd24 = 908510306.0295488416320000,
+                    PriceUsd = 107928.6809120000000000,
+                    VolumePercent = 6.3335455045243005
+                });
+            }
+            Debug.WriteLine("Test update listMaraket");
+            ListMarketModels = result;
+
         }
 
         private async Task LoadDataCrypto()
