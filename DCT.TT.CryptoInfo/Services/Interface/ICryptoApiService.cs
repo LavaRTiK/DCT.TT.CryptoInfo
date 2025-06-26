@@ -12,5 +12,6 @@ namespace DCT.TT.CryptoInfo.Services.Interface
         public Task<HistoryCoinPoint> ExcuteHistoryCoin(string id, string interval = "m30");
         public Task<List<CoinModel>> ExecuteCryptoAsync(int limitCount = 10);
         public  Task<CoinModel> ExecuteCryptoSlugId(string id);
+        public Task<List<MarketModel>> GetMarket(string coinId, int limit = 5, int offset = 0);
     }
 }
