@@ -9,6 +9,6 @@ namespace DCT.TT.CryptoInfo.Services
 {
     internal class GlobalSettingsService
     {
-        private Localization _localization;
+        public string CurrentSelectedId;
     }
 }

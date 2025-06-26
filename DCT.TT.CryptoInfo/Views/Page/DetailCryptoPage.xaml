@@ -5,12 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:fa="http://schemas.fontawesome.com/icons/"
       xmlns:local="clr-namespace:DCT.TT.CryptoInfo.Views.Page"
+      xmlns:convertes="clr-namespace:DCT.TT.CryptoInfo.Infrastructure.Convertes"
       xmlns:oxy="http://oxyplot.org/wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       DataContext="{Binding DetailCryptoPageModel,Source={StaticResource Locator}}"
       Title="DetailCryptoPage">
-    <Grid>
+    <Page.Resources>
+        <convertes:PercentBrushConvector x:Key="PercentBrushConvector"/>
+    </Page.Resources>
+    <Grid Margin="0,0,0,-129">
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                 <GradientStop Color="#2d2d30" Offset="0" />
@@ -29,7 +33,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" Margin="20,0,0,0" Height="20" Width="53" Command="{Binding ChangePageBack}">
+        <Button Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" Margin="20,0,0,0" Height="20" Width="53" Command="{Binding ChangePageBackCommand}">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Solid_ArrowLeft" Width="16" Height="16" Foreground="White" />
                 <TextBlock Text="Назад"  Foreground="White"/>
@@ -37,8 +41,8 @@
         </Button>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" Height="53" Width="83">
-            <TextBlock FontSize="24" FontWeight="Bold" Foreground="White">BitCoin</TextBlock>
-            <TextBlock FontSize="16" Foreground="White">BTC</TextBlock>
+            <TextBlock FontSize="24" FontWeight="Bold" Foreground="White" Text="{Binding NameCoinDiagram1}"></TextBlock>
+            <TextBlock FontSize="16" Foreground="White" Text="{Binding SymbolDiagram1}"></TextBlock>
         </StackPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="363,0,0,0" Height="43" Width="201">
             <Button Margin="10" Padding="3">
@@ -67,21 +71,69 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="20,10,0,0">
-            <TextBox Background="Transparent" FontSize="30" Foreground="White" FontWeight="Bold">$42,856.23</TextBox>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,10,0,0" VerticalAlignment="Stretch" MinHeight="80" MinWidth="120">
+            <TextBox Background="Transparent" BorderBrush="Transparent" FontSize="30" Foreground="White" FontWeight="Bold" Text="{Binding PriceCoin,StringFormat='${0:0.##}'}"></TextBox>
             <StackPanel Orientation="Horizontal">
-                <TextBox Background="Transparent" Foreground="Green" FontSize="18">+2.34%</TextBox>
+                <TextBox Background="Transparent" BorderBrush="Transparent" Foreground="{Binding ChangePercent,Converter={StaticResource PercentBrushConvector}}" FontSize="18 " Text="{Binding ChangePercent,StringFormat={}{0:0.##}%}"></TextBox>
                 <TextBlock Background="Transparent" Foreground="Gray" FontSize="16" FontWeight="Normal" Text="За последние 24ч" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
-        <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1" Columns="5" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
-            <Button Content="1Ч" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Padding="10" Margin="5,0,5,0"/>
-            <Button Content="24Ч" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14"/>
-            <Button Content="1H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14"/>
-            <Button Content="1М" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14"/>
-            <Button Content="1Г" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14"/>
+        <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1" Columns="9" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+            <Button Content="1M" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Padding="10" Margin="5,0,5,0" Command="{Binding ChangeTimeDiagram}" CommandParameter="m1"/>
+            <Button Content="5M" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m5"/>
+            <Button Content="15M" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m15"/>
+            <Button Content="30M" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m30"/>
+            <Button Content="1H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h1"/>
+            <Button Content="2H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h2"/>
+            <Button Content="6H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h6"/>
+            <Button Content="12H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h12"/>
+            <Button Content="1D" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="d1"/>
         </UniformGrid>
-        <!--<oxy:PlotView Grid.Row="2" Grid.ColumnSpan="2" Model="{Binding SelectDiagram}" Background="Transparent"/>-->
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" FontSize="32" Text="Тут диаграма" Foreground="White"></TextBlock>
+        <oxy:PlotView Grid.Row="2" Grid.ColumnSpan="2" Model="{Binding CryptoDiagram1}" Background="Transparent"/>
+        <ScrollViewer Grid.Row="3" Grid.ColumnSpan="2" >
+            <ListView Background="Transparent" BorderThickness="0" FontSize="16" FontWeight="Medium" Foreground="White" ItemsSource="{Binding ListMarketModels}" Width="Auto" BorderBrush="Transparent">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="Padding" Value="16,12"></Setter>
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                        <Setter Property="Foreground" Value="White"></Setter>
+                        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                        <Setter Property="BorderThickness" Value="0"></Setter>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name Market" DisplayMemberBinding="{Binding ExchangeId}"></GridViewColumn>
+                        <GridViewColumn Header="Name Coin">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding NameCoinDiagram1,RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                        <TextBlock Text="{Binding BaseSymbol}" FontSize="12" Foreground="Gray"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Quote">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding QuoteSymbol}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Volume (24h)" DisplayMemberBinding="{Binding VolumeUsd24,StringFormat={}{0:0.##}}"/>
+                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding PriceUsd,StringFormat='${0:0.##}'}"></GridViewColumn>
+                        <GridViewColumn Header="Volume Percent">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="{Binding VolumePercent,Converter={StaticResource PercentBrushConvector}}" Text="{Binding VolumePercent}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>

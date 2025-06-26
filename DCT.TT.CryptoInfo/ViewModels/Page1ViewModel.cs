@@ -25,6 +25,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
     [MarkupExtensionReturnType(typeof(Page1ViewModel))]
     internal class Page1ViewModel : ViewModelBase
     {
+        private GlobalSettingsService _gb;
         private readonly ICryptoApiService _serviceCryptoApiService;
         private readonly PageService _pageService;
         #region Property
@@ -121,6 +122,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
             }
         }
         #endregion
+
         #region SymbolDiagram2
         private string _symbolDiagram2;
         public string SymbolDiagram2
@@ -181,6 +183,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
         private void OnSelectCryptoCommandExecuted(object p)
         {
             Debug.WriteLine("псеводо сохранения команды c id:" + p.ToString());
+            _gb.CurrentSelectedId = p.ToString();
             _pageService.ChangePage(new DetailCryptoPage());
             Debug.WriteLine("сменил страницу");
         }
@@ -188,9 +191,9 @@ namespace DCT.TT.CryptoInfo.ViewModels
 
         #endregion
 
-        public Page1ViewModel(ICryptoApiService serviceCryptoApi, PageService pageService)
+        public Page1ViewModel(ICryptoApiService serviceCryptoApi, PageService pageService, GlobalSettingsService gb)
         {
-
+            _gb = gb;
             _serviceCryptoApiService = serviceCryptoApi;
             _pageService = pageService;
             #region Command

@@ -65,7 +65,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
             _pageService = pageService;
             _pageService.OnPageChanged += (page) => PageSource = page;
             //_pageService.ChangePage(new Page1());
-            _pageService.ChangePage(new SettingsPage());
+            _pageService.ChangePage(new DetailCryptoPage());
             #region Commands
             CloseApplicationCommand = new LambdaCommand(OnCloseApllicationCommandExecuted,CanCloseApplicationCommandExecute);
             #endregion

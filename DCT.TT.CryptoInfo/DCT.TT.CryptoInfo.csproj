@@ -251,7 +251,10 @@
     <Compile Include="Infrastructure\Convertes\PercentBrushConvector.cs" />
     <Compile Include="Infrastructure\Enums\Localization.cs" />
     <Compile Include="Models\CoinModel.cs" />
+    <Compile Include="Models\DataMarket.cs" />
     <Compile Include="Models\HistoryCoinPoint.cs" />
+    <Compile Include="Models\MarketModel.cs" />
+    <Compile Include="Models\OnlyOneCoinData.cs" />
     <Compile Include="Models\ParseDataJson.cs" />
     <Compile Include="Models\PointCoin.cs" />
     <Compile Include="Program.cs" />

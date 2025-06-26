@@ -16,6 +16,7 @@ namespace DCT.TT.CryptoInfo.Services
             services.AddSingleton<HttpClient>();
             services.AddSingleton<PageService>();
             services.AddSingleton<ICryptoApiService, CryptoApiService>();
+            services.AddSingleton<GlobalSettingsService>();
             //register services
             return services;
         }

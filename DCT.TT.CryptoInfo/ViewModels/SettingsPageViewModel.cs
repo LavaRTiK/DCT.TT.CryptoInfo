@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using DCT.TT.CryptoInfo.Services;
+using DCT.TT.CryptoInfo.Views.Page;
 
 namespace DCT.TT.CryptoInfo.ViewModels
 {
@@ -58,11 +59,10 @@ namespace DCT.TT.CryptoInfo.ViewModels
 
         private void OnChangePageBackExcecuted(object p)
         {
-            _pageService.ChangePage(new Page());
+            _pageService.ChangePage(new Page1());
         }
 
         #endregion
-
 
         #endregion
 
