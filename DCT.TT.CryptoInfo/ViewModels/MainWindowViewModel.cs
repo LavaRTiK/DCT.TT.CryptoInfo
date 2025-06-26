@@ -111,6 +111,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
             timer.Tick += new EventHandler(timerTick);
             timer.Interval = new TimeSpan(0, 0, 0, 60,0);
             timer.Start();
+            timerTick(null,EventArgs.Empty);
         }
         private async void timerTick(object sender, EventArgs e)
         {
