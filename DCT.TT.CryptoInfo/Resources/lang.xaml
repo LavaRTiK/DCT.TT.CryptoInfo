@@ -16,4 +16,8 @@
     <v:String x:Key="Page1_Review_tabel">Review</v:String>
     <v:String x:Key="Page1_Title_tabel">Title</v:String>
     <v:String x:Key="Page1_Volume24h_tabel">Volume(24h)</v:String>
+    <v:String x:Key="SettingPage_SelectLocalization_label">Select Localization</v:String>
+    <v:String x:Key="SettingPage_Back_btn">Back</v:String>
+    <v:String x:Key="Page1_Actions_tabel">Actions</v:String>
+    <v:String x:Key="Page1_SearchForCrypto_placeholeder">Search for cryptocurrencies...</v:String>
 </ResourceDictionary>

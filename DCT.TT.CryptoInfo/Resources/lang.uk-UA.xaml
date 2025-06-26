@@ -16,4 +16,8 @@
     <v:String x:Key="Page1_Review_tabel">Огляд</v:String>
     <v:String x:Key="Page1_Title_tabel">Назва</v:String>
     <v:String x:Key="Page1_Volume24h_tabel">Обсяг (24г)</v:String>
+    <v:String x:Key="SettingPage_SelectLocalization_label">Оберіть мову</v:String>
+    <v:String x:Key="SettingPage_Back_btn">Назад</v:String>
+    <v:String x:Key="Page1_Actions_tabel">Дії</v:String>
+    <v:String x:Key="Page1_SearchForCrypto_placeholeder">Пошук криптовалюти...</v:String>
 </ResourceDictionary>
