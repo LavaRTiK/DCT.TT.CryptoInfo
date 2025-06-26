@@ -13,6 +13,7 @@
       Title="DetailCryptoPage">
     <Page.Resources>
         <convertes:PercentBrushConvector x:Key="PercentBrushConvector"/>
+        <convertes:NumberToShort x:Key="NumberToShort"/>
     </Page.Resources>
     <Grid>
         <Grid.Background>
@@ -36,7 +37,7 @@
         <Button Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" Margin="20,0,0,0" Height="20" Width="53" Command="{Binding ChangePageBackCommand}">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Solid_ArrowLeft" Width="16" Height="16" Foreground="White" />
-                <TextBlock Text="Назад"  Foreground="White"/>
+                <TextBlock Text="{DynamicResource DetailCryptoPage_Back_btn}"  Foreground="White"/>
             </StackPanel>
         </Button>
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" Height="52" Width="83">
@@ -44,7 +45,7 @@
             <TextBlock FontSize="16" Foreground="White" Text="{Binding SymbolDiagram1}"></TextBlock>
         </StackPanel>
         <UniformGrid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,20,20,0">
-            <Button Margin="0,0,20,0">
+            <Button Margin="0,0,0,0">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Color="#5a5a5a" Offset="0" />
@@ -53,7 +54,7 @@
                 </Button.Background>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Regular_Heart" Width="15" Height="15" Foreground="White"/>
-                    <TextBlock VerticalAlignment="Center" Text="В избраные" Foreground="White"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Text="{DynamicResource DetailCryptoPage_AddToFavorites_btn}" Foreground="White"></TextBlock>
                 </StackPanel>
             </Button>
             <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="3">
@@ -65,7 +66,7 @@
                 </Button.Background>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Solid_ShareAlt" Width="15" Height="15" Foreground="White"></fa:ImageAwesome>
-                    <TextBlock Text="Поделлиться" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                    <TextBlock Text="{DynamicResource DetailCryptoPage_Share_btn}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
                 </StackPanel>
             </Button>
         </UniformGrid>
@@ -73,19 +74,19 @@
             <TextBox Background="Transparent" BorderBrush="Transparent" FontSize="30" Foreground="White" FontWeight="Bold" Text="{Binding PriceCoin,StringFormat='${0:0.##}'}"></TextBox>
             <StackPanel Orientation="Horizontal">
                 <TextBox Background="Transparent" BorderBrush="Transparent" Foreground="{Binding ChangePercent,Converter={StaticResource PercentBrushConvector}}" FontSize="18 " Text="{Binding ChangePercent,StringFormat={}{0:0.##}%}"></TextBox>
-                <TextBlock Background="Transparent" Foreground="Gray" FontSize="16" FontWeight="Normal" Text="За последние 24ч" VerticalAlignment="Center"/>
+                <TextBlock Background="Transparent" Foreground="Gray" FontSize="16" FontWeight="Normal" Text="{DynamicResource DetailCryptoPage_OverLast24H_label}" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1" Columns="9" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="238,0,0,0" Height="40" Width="469">
-            <Button Content="1M" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Padding="10" Margin="5,0,5,0" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m1"/>
-            <Button Content="5M" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m5"/>
-            <Button Content="15M" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m15"/>
-            <Button Content="30M" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m30"/>
-            <Button Content="1H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h1"/>
-            <Button Content="2H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h2"/>
-            <Button Content="6H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h6"/>
-            <Button Content="12H" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h12"/>
-            <Button Content="1D" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="d1"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time1m_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Padding="10" Margin="5,0,5,0" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m1"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time5m_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m5"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time15m_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m15"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time30m_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="m30"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time1h_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h1"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time2h_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h2"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time6h_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h6"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time12h_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="h12"/>
+            <Button Content="{DynamicResource DetailCryptoPage_Time1d_btn}" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="14" Command="{Binding ChangeTimeDiagramCommand}" CommandParameter="d1"/>
         </UniformGrid>
         <oxy:PlotView Grid.Row="2" Grid.ColumnSpan="2" Model="{Binding CryptoDiagram1}" Background="Transparent" Margin="20,0,20,0"/>
         <ScrollViewer Grid.Row="3" Grid.ColumnSpan="2" >
@@ -103,8 +104,8 @@
                     </ListView.Resources>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Name Market" DisplayMemberBinding="{Binding ExchangeId}"></GridViewColumn>
-                            <GridViewColumn Header="Name Coin">
+                            <GridViewColumn Header="{DynamicResource DetailCryptoPage_NameMarket_table}" DisplayMemberBinding="{Binding ExchangeId}"></GridViewColumn>
+                            <GridViewColumn Header="{DynamicResource DetailCryptoPage_NameCoin_table}">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
@@ -114,16 +115,16 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Quote">
+                            <GridViewColumn Header="{DynamicResource DetailCryptoPage_Quote_table}">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding QuoteSymbol}"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Volume (24h)" DisplayMemberBinding="{Binding VolumeUsd24,StringFormat={}{0:0.##}}"/>
-                            <GridViewColumn Header="Price" DisplayMemberBinding="{Binding PriceUsd,StringFormat='${0:0.##}'}"></GridViewColumn>
-                            <GridViewColumn Header="Volume Percent">
+                            <GridViewColumn Header="{DynamicResource DetailCryptoPage_Volume24h}" DisplayMemberBinding="{Binding VolumeUsd24,Converter={StaticResource NumberToShort},StringFormat={}{0:0.##}}"/>
+                            <GridViewColumn Header="{DynamicResource DetailCryptoPage_Price_table}" DisplayMemberBinding="{Binding PriceUsd,StringFormat='${0:0.##}'}"></GridViewColumn>
+                            <GridViewColumn Header="{DynamicResource DetailCryptoPage_VolumePercent_table}">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Foreground="{Binding VolumePercent,Converter={StaticResource PercentBrushConvector}}" Text="{Binding VolumePercent,StringFormat={}{0:##}%}"></TextBlock>

@@ -21,4 +21,20 @@
     <v:String x:Key="Page1_Actions_tabel">Дії</v:String>
     <v:String x:Key="Page1_SearchForCrypto_placeholeder">Пошук криптовалюти...</v:String>
     <v:String x:Key="SettingsPage_Token_label">Ключ</v:String>
+    <v:String x:Key="DetailCryptoPage_OverLast24H_label">За останні 24 години</v:String>
+    <v:String x:Key="DetailCryptoPage_Time1m_btn">1М</v:String>
+    <v:String x:Key="DetailCryptoPage_Time5m_btn">5М</v:String>
+    <v:String x:Key="DetailCryptoPage_Time15m_btn">15М</v:String>
+    <v:String x:Key="DetailCryptoPage_Time30m_btn">30М</v:String>
+    <v:String x:Key="DetailCryptoPage_Time1h_btn">1Г</v:String>
+    <v:String x:Key="DetailCryptoPage_Time2h_btn">2Г</v:String>
+    <v:String x:Key="DetailCryptoPage_Time6h_btn">6Г</v:String>
+    <v:String x:Key="DetailCryptoPage_Time12h_btn">12Г</v:String>
+    <v:String x:Key="DetailCryptoPage_Time1d_btn">1Д</v:String>
+    <v:String x:Key="DetailCryptoPage_NameMarket_table">Назва Ринку</v:String>
+    <v:String x:Key="DetailCryptoPage_Quote_table">Лапки</v:String>
+    <v:String x:Key="DetailCryptoPage_Volume24h">Обсяг (24г)</v:String>
+    <v:String x:Key="DetailCryptoPage_NameCoin_table">Назва Монета</v:String>
+    <v:String x:Key="DetailCryptoPage_Price_table">Ціна</v:String>
+    <v:String x:Key="DetailCryptoPage_VolumePercent_table">Відсоток об'єму</v:String>
 </ResourceDictionary>

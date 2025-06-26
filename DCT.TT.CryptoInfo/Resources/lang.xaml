@@ -21,4 +21,20 @@
     <v:String x:Key="Page1_Actions_tabel">Actions</v:String>
     <v:String x:Key="Page1_SearchForCrypto_placeholeder">Search for cryptocurrencies...</v:String>
     <v:String x:Key="SettingsPage_Token_label">Token</v:String>
+    <v:String x:Key="DetailCryptoPage_OverLast24H_label">Over the last 24h</v:String>
+    <v:String x:Key="DetailCryptoPage_Time1m_btn">1M</v:String>
+    <v:String x:Key="DetailCryptoPage_Time5m_btn">5M</v:String>
+    <v:String x:Key="DetailCryptoPage_Time15m_btn">15M</v:String>
+    <v:String x:Key="DetailCryptoPage_Time30m_btn">30M</v:String>
+    <v:String x:Key="DetailCryptoPage_Time1h_btn">1H</v:String>
+    <v:String x:Key="DetailCryptoPage_Time2h_btn">2H</v:String>
+    <v:String x:Key="DetailCryptoPage_Time6h_btn">6H</v:String>
+    <v:String x:Key="DetailCryptoPage_Time12h_btn">12H</v:String>
+    <v:String x:Key="DetailCryptoPage_Time1d_btn">1D</v:String>
+    <v:String x:Key="DetailCryptoPage_NameMarket_table">Name Market</v:String>
+    <v:String x:Key="DetailCryptoPage_Quote_table">Quote</v:String>
+    <v:String x:Key="DetailCryptoPage_Volume24h">Volume (24h)</v:String>
+    <v:String x:Key="DetailCryptoPage_NameCoin_table">Name Coin</v:String>
+    <v:String x:Key="DetailCryptoPage_Price_table">Price</v:String>
+    <v:String x:Key="DetailCryptoPage_VolumePercent_table">Volume Percent</v:String>
 </ResourceDictionary>
