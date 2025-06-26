@@ -22,8 +22,25 @@
         <StatusBar DockPanel.Dock="Bottom"  Background="Transparent" FontSize="12" Foreground="#9ca3af">
             <StatusBarItem>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Ellipse Width="30" Height="30" Stroke="Black" StrokeThickness="2" Fill="Yellow"></Ellipse>
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Offline</TextBlock>
+                    <Ellipse Width="30" Height="30" Stroke="Black" StrokeThickness="2">
+                        <Ellipse.Style>
+                            <Style TargetType="{x:Type Ellipse}">
+                                <Setter Property="Fill" Value="Red"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding StatusApi}" Value="Online">
+                                        <Setter Property="Fill" Value="Green"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding StatusApi}" Value="Requst...">
+                                        <Setter Property="Fill" Value="DarkOrange"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding StatusApi}" Value="Offline">
+                                        <Setter Property="Fill" Value="Red"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Ellipse.Style>
+                    </Ellipse>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding StatusApi}"></TextBlock>
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>

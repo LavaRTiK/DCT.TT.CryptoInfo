@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Text;
 using System.Threading;
@@ -108,6 +109,19 @@ namespace DCT.TT.CryptoInfo.Services
                 return new List<CoinModel>();
             }
         }
-    }
 
+        public async Task<bool> Ping()
+        {
+            try
+            {
+                using var renponse = await _httpClient.GetAsync("/v3/assets");
+                renponse.EnsureSuccessStatusCode(); 
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
 }

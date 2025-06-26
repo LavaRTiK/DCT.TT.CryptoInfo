@@ -12,12 +12,16 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
+using System.Windows.Threading;
+using DCT.TT.CryptoInfo.Services.Interface;
 
 namespace DCT.TT.CryptoInfo.ViewModels
 {
     [MarkupExtensionReturnType(typeof(MainWindowViewModel))]
     internal class MainWindowViewModel : ViewModelBase
     {
+        private DispatcherTimer timer = null;
+        private ICryptoApiService _cryptoApiService;
         #region Property
 
         #region page
@@ -47,6 +51,18 @@ namespace DCT.TT.CryptoInfo.ViewModels
         #endregion
 
         #endregion
+
+        private string _statusApi;
+
+        public string StatusApi
+        {
+            get => _statusApi;
+            set
+            {
+                Set(ref _statusApi, value);
+            }
+        }
+
         #region Commands
 
         #region ChangePageSettings
@@ -71,10 +87,12 @@ namespace DCT.TT.CryptoInfo.ViewModels
         }
         #endregion
         #endregion
-        public MainWindowViewModel(PageService pageService)
+        public MainWindowViewModel(PageService pageService,ICryptoApiService cryptoApiService)
         {
             //TEST
             Debug.WriteLine(System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
+            StatusApi = "Offline";
+            _cryptoApiService = cryptoApiService;
             _pageService = pageService;
             _pageService.OnPageChanged += (page) => PageSource = page;
             _pageService.ChangePage(new Page1());
@@ -82,8 +100,31 @@ namespace DCT.TT.CryptoInfo.ViewModels
             #region Commands
             CloseApplicationCommand = new LambdaCommand(OnCloseApllicationCommandExecuted,CanCloseApplicationCommandExecute);
             ChangePageSetting = new LambdaCommand(OnChangePageSettingExcecuted, CanChangePageSettingExcecute);
+            timeStart();
 
             #endregion
+        }
+
+        private void timeStart()
+        {
+            timer = new DispatcherTimer(DispatcherPriority.Render);
+            timer.Tick += new EventHandler(timerTick);
+            timer.Interval = new TimeSpan(0, 0, 0, 60,0);
+            timer.Start();
+        }
+        private async void timerTick(object sender, EventArgs e)
+        {
+            Debug.WriteLine("cheak api");
+            StatusApi = "Request..";
+            bool cheak = await _cryptoApiService.Ping();
+            if (cheak)
+            {
+                StatusApi = "Online";
+            }
+            else
+            {
+                StatusApi = "Offline";
+            }
         }
     }
 }
