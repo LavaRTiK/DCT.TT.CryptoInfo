@@ -95,6 +95,19 @@ namespace DCT.TT.CryptoInfo.Services
                 return new List<MarketModel>();
             }
         }
+        public async Task<List<CoinModel>> GetCoinsStrSearch(string str)
+        {
+            try
+            {
+                var respons = await _httpClient.GetStringAsync($"/v3/assets?search={str}&limit=5");
+                List<CoinModel> listCoin = JsonConvert.DeserializeObject<ParseDataJson>(respons).listCoin;
+                return listCoin;
+            }
+            catch
+            {
+                return new List<CoinModel>();
+            }
+        }
     }
 
 }

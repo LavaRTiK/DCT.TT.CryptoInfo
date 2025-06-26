@@ -29,7 +29,31 @@ namespace DCT.TT.CryptoInfo.ViewModels
         private readonly ICryptoApiService _serviceCryptoApiService;
         private readonly PageService _pageService;
         #region Property
+        #region SerachCrypto
 
+        private string _serachCrypto;
+        public string SearchCrypto
+        {
+            get => _serachCrypto;
+            set
+            {
+                Set(ref _serachCrypto, value);
+                FilterCrypto();
+            }
+        }
+        #endregion
+
+        #region FilterCryptoList
+        private List<CoinModel> _filterCryptoList;
+        public List<CoinModel> FilterCryptoList 
+        {
+            get => _filterCryptoList;
+            set
+            {
+                Set(ref _filterCryptoList, value);
+            }
+        }
+        #endregion
         #region ListTestObject
 
         private HistoryCoinPoint _historyCoin;
@@ -204,6 +228,70 @@ namespace DCT.TT.CryptoInfo.ViewModels
             InitAsync();
         }
 
+        public async void FilterCrypto()
+        {
+            var respone = await _serviceCryptoApiService.GetCoinsStrSearch(_serachCrypto);
+            if (respone is null || respone.Count == 0)
+            {
+                respone.Add(new CoinModel
+                {
+                    Id = "bitcoin1",
+                    Rank = "1",
+                    Symbol = "BTC",
+                    Name = "BitCoin1",
+                    MarketCapUsd = 2065776649754.4532176367632261,
+                    PriceUsd = 103898.4932614066056327,
+                    ChangePercent24Hr = 4.6321745238798559,
+                    VolumeUsd24Hr = 101251.5781941297998463
+                });
+                respone.Add(new CoinModel
+                {
+                    Id = "bitcoin2",
+                    Rank = "1",
+                    Symbol = "BTC",
+                    Name = "BitCoin2",
+                    MarketCapUsd = 2065776649754.4532176367632261,
+                    PriceUsd = 103898.4932614066056327,
+                    ChangePercent24Hr = 4.6321745238798559,
+                    VolumeUsd24Hr = 101251.5781941297998463
+                });
+                respone.Add(new CoinModel
+                {
+                    Id = "bitcoin3",
+                    Rank = "1",
+                    Symbol = "BTC",
+                    Name = "BitCoin3",
+                    MarketCapUsd = 2065776649754.4532176367632261,
+                    PriceUsd = 103898.4932614066056327,
+                    ChangePercent24Hr = 4.6321745238798559,
+                    VolumeUsd24Hr = 101251.5781941297998463
+                });
+                respone.Add(new CoinModel
+                {
+                    Id = "bitcoin4",
+                    Rank = "1",
+                    Symbol = "BTC",
+                    Name = "BitCoin4",
+                    MarketCapUsd = 2065776649754.4532176367632261,
+                    PriceUsd = 103898.4932614066056327,
+                    ChangePercent24Hr = 4.6321745238798559,
+                    VolumeUsd24Hr = 101251.5781941297998463
+                });
+                respone.Add(new CoinModel
+                {
+                    Id = "bitcoin5",
+                    Rank = "1",
+                    Symbol = "BTC",
+                    Name = "BitCoin5",
+                    MarketCapUsd = 2065776649754.4532176367632261,
+                    PriceUsd = 103898.4932614066056327,
+                    ChangePercent24Hr = 4.6321745238798559,
+                    VolumeUsd24Hr = 101251.5781941297998463
+                });
+            }
+            Debug.WriteLine("setFilter");
+            FilterCryptoList = respone;
+        }
         private void UpdateDiagram()
         {
             //timer update 5 second //requst limit 
@@ -219,8 +307,7 @@ namespace DCT.TT.CryptoInfo.ViewModels
             if (await _serviceCryptoApiService.ExecuteCryptoAsync(10) is { } data)
                 ListCrypto = data;
             else if (Debugger.IsAttached)
-            {
-                Debug.WriteLine("Заисал мог поект для listCoin");
+            { 
                 //test object
                 List<CoinModel> listCoin = new List<CoinModel>();
                 listCoin.Add(new CoinModel
