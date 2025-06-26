@@ -17,7 +17,7 @@ namespace DCT.TT.CryptoInfo.Services
 {
     internal class CryptoApiService : ICryptoApiService
     {
-        private string _token = "59fc2fa78469cf29f68fb8a39cba808611f813b87a2a652d69491a6742b3f2bb";
+        private string _token = "";
         private HttpClient _httpClient;
 
         public CryptoApiService(HttpClient httpClient)
