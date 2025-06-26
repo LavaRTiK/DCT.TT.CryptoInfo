@@ -39,13 +39,12 @@
                 <TextBlock Text="Назад"  Foreground="White"/>
             </StackPanel>
         </Button>
-
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" Height="52" Width="83">
             <TextBlock FontSize="24" FontWeight="Bold" Foreground="White" Text="{Binding NameCoinDiagram1}"></TextBlock>
             <TextBlock FontSize="16" Foreground="White" Text="{Binding SymbolDiagram1}"></TextBlock>
         </StackPanel>
-        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="506,0,0,0" Height="44" Width="201" >
-            <Button Margin="10" Padding="3">
+        <UniformGrid Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,20,20,0">
+            <Button Margin="0,0,20,0">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Color="#5a5a5a" Offset="0" />
@@ -55,7 +54,6 @@
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Regular_Heart" Width="15" Height="15" Foreground="White"/>
                     <TextBlock VerticalAlignment="Center" Text="В избраные" Foreground="White"></TextBlock>
-
                 </StackPanel>
             </Button>
             <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="3">
@@ -70,7 +68,7 @@
                     <TextBlock Text="Поделлиться" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
                 </StackPanel>
             </Button>
-        </StackPanel>
+        </UniformGrid>
         <StackPanel Grid.Row="1" Margin="20,10,619,97" MinHeight="80" MinWidth="120" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <TextBox Background="Transparent" BorderBrush="Transparent" FontSize="30" Foreground="White" FontWeight="Bold" Text="{Binding PriceCoin,StringFormat='${0:0.##}'}"></TextBox>
             <StackPanel Orientation="Horizontal">

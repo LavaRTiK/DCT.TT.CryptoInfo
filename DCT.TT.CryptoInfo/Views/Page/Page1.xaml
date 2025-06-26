@@ -77,16 +77,35 @@
             <ColumnDefinition Width="53*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="91*"/>
-            <RowDefinition Height="48*"/>
-            <RowDefinition Height="140*"/>
-            <RowDefinition Height="47*"/>
-            <RowDefinition Height="124*"/>
+            <RowDefinition Height="119*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="146*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="121*"/>
         </Grid.RowDefinitions>
-
-        <TextBox Style="{DynamicResource TextBoxStyleSearch}" x:Name="search" Background="#333333" BorderBrush="#3f3f46" BorderThickness="1" FontSize="16" Foreground="White" Margin="10,0,41,0" Padding="16,8,40,8" VerticalAlignment="Center" Height="38" />
-        <fa:ImageAwesome IsHitTestVisible="False" Icon="Solid_Search" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20" Margin="200,0,0,0"/>
-        <TextBlock IsHitTestVisible="False" FontSize="16" Foreground="Gray" Text="Пошук криптовлюти..." VerticalAlignment="Center" Margin="15,0,0,0" Height="22">
+        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Height="40">
+            <TextBox Style="{DynamicResource TextBoxStyleSearch}" x:Name="search" Background="#333333" BorderBrush="#3f3f46" Text="{Binding SearchCrypto,UpdateSourceTrigger=PropertyChanged }" Height="40" BorderThickness="1" FontSize="16" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="0,10,0,0"/>
+            <ListBox ItemsSource="{Binding FilterCryptoList}" Background="Transparent" HorizontalAlignment="Stretch" Height="30" Foreground="White"  FontSize="16" BorderBrush="Transparent" VerticalAlignment="Center" Margin="0,0,0,-40">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,2">
+                            <Grid.InputBindings>
+                                <MouseBinding Command="{Binding DataContext.SelectCryptoCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding Id}" MouseAction="LeftDoubleClick">
+                                </MouseBinding>
+                            </Grid.InputBindings>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Symbol}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <fa:ImageAwesome IsHitTestVisible="False" Icon="Solid_Search" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20" Margin="225,0,0,0"/>
+        <TextBlock IsHitTestVisible="False" FontSize="16" Foreground="Gray" Text="{DynamicResource Page1_SearchForCrypto_placeholeder}" VerticalAlignment="Center" Padding="10,2,0,0" Height="26">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -98,7 +117,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock Style="{DynamicResource DefualtText}" Grid.Row="1" Grid.Column="0" Text="Обзор рынка" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        <TextBlock Style="{DynamicResource DefualtText}" Grid.Row="1" Grid.Column="0" Text="{DynamicResource Page1_MarketOverview_label}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Height="22" Width="125"/>
 
         <Border Grid.Row="2" Grid.Column="0" BorderBrush="#3f3f46" BorderThickness="1" Margin="10,10,10,10" CornerRadius="5">
             <Grid>
@@ -122,7 +141,7 @@
                 <oxy:PlotView Model="{Binding CryptoDiagram3}" Background="Transparent"/>
             </Grid>
         </Border>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Список криптовалют" Style="{DynamicResource DefualtText}" Margin="10,10,0,0"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource Page1_ListOfCryptocurrencies_label}" Style="{DynamicResource DefualtText}" Margin="10,10,0,0"/>
         <ScrollViewer Grid.Row="4" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True" BorderBrush="Transparent" Background="Transparent">
             <ListView Background="Transparent" BorderThickness="0" FontSize="16" FontWeight="Medium" Foreground="White" ItemsSource="{Binding ListCrypto}" Width="Auto" BorderBrush="Transparent">
                 <ListView.Resources>
@@ -138,7 +157,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="#" DisplayMemberBinding="{Binding  Rank}"></GridViewColumn>
-                        <GridViewColumn Header="Название">
+                        <GridViewColumn Header="{DynamicResource Page1_Title_tabel}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
@@ -148,17 +167,17 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding PriceUsd,StringFormat='${0:0.##}'}"></GridViewColumn>
-                        <GridViewColumn Header="24ч %">
+                        <GridViewColumn Header="{DynamicResource Page1_Price_tabel}" DisplayMemberBinding="{Binding PriceUsd,StringFormat='${0:0.##}'}"></GridViewColumn>
+                        <GridViewColumn Header="{DynamicResource Page1_24h_tabel}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding ChangePercent24Hr,StringFormat={}{0:0.##}%}" Foreground="{Binding ChangePercent24Hr,Converter={StaticResource PercentBrushConvector}}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Рыночная капитализация" DisplayMemberBinding="{Binding MarketCapUsd,Converter={StaticResource NumberToShort}}"></GridViewColumn>
-                        <GridViewColumn Header="Объем (24ч)" DisplayMemberBinding="{Binding VolumeUsd24Hr,Converter={StaticResource NumberToShort}}"></GridViewColumn>
-                        <GridViewColumn Header="Действия">
+                        <GridViewColumn Header="{DynamicResource Page1_MarketCapitalization_tabel}" DisplayMemberBinding="{Binding MarketCapUsd,Converter={StaticResource NumberToShort}}"></GridViewColumn>
+                        <GridViewColumn Header="{DynamicResource Page1_Volume24h_tabel}" DisplayMemberBinding="{Binding VolumeUsd24Hr,Converter={StaticResource NumberToShort}}"></GridViewColumn>
+                        <GridViewColumn Header="{DynamicResource Page1_Actions_tabel}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <!-- тут не зыбать команду и параметр-->

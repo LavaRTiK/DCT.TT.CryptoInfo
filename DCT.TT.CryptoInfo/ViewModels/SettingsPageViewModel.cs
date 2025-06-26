@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using DCT.TT.CryptoInfo.Infrastructure.Commands;
 using DCT.TT.CryptoInfo.Services;
 using DCT.TT.CryptoInfo.Views.Page;
 
@@ -72,6 +73,12 @@ namespace DCT.TT.CryptoInfo.ViewModels
             Localizations = App.Languages;
             //private dont update ProprtyChange
             _itemSelectedLocalization = CheckCurrentCulture();
+
+            #region Commands
+
+            ChangePageBack = new LambdaCommand(OnChangePageBackExcecuted, CanChangePageBackExcecute);
+
+            #endregion
         }
         public CultureInfo CheckCurrentCulture()
         {

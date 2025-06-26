@@ -48,6 +48,19 @@ namespace DCT.TT.CryptoInfo.ViewModels
 
         #endregion
         #region Commands
+
+        #region ChangePageSettings
+
+        public ICommand ChangePageSetting { get; }
+
+        private bool CanChangePageSettingExcecute(object p) => true;
+
+        private void OnChangePageSettingExcecuted(object p)
+        {
+            Debug.WriteLine("переход к настройкам");
+            _pageService.ChangePage(new SettingsPage());
+        }
+        #endregion
         #region CloseApplicationCommand
         public ICommand CloseApplicationCommand { get; }
 
@@ -64,10 +77,12 @@ namespace DCT.TT.CryptoInfo.ViewModels
             Debug.WriteLine(System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
             _pageService = pageService;
             _pageService.OnPageChanged += (page) => PageSource = page;
-            //_pageService.ChangePage(new Page1());
-            _pageService.ChangePage(new DetailCryptoPage());
+            _pageService.ChangePage(new Page1());
+            //_pageService.ChangePage(new DetailCryptoPage());
             #region Commands
             CloseApplicationCommand = new LambdaCommand(OnCloseApllicationCommandExecuted,CanCloseApplicationCommandExecute);
+            ChangePageSetting = new LambdaCommand(OnChangePageSettingExcecuted, CanChangePageSettingExcecute);
+
             #endregion
         }
     }
